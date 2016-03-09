@@ -1,47 +1,81 @@
-/// <binding Clean='clean' />
+/// <binding AfterBuild='bundleLayout' Clean='clean' ProjectOpened='watch' />
 "use strict";
 
-var gulp = require("gulp"),
-  rimraf = require("rimraf"),
-  concat = require("gulp-concat"),
-  cssmin = require("gulp-cssmin"),
-  uglify = require("gulp-uglify");
+var gulp = require('gulp');
+var mainBowerFiles = require('main-bower-files');
+var bower = require('gulp-bower');
+var uglify = require('gulp-uglify');
+var mincss = require('gulp-cssmin');
+var rename = require('gulp-rename');
+var concat = require('gulp-concat');
+var ignore = require('gulp-ignore');
+var rimraf = require('gulp-rimraf');
+var watch = require('gulp-watch');
 
-var webroot = "./wwwroot/";
+var lib = 'wwwroot/lib';
+var content = 'wwwroot/content';
 
-var paths = {
-  js: webroot + "js/**/*.js",
-  minJs: webroot + "js/**/*.min.js",
-  css: webroot + "css/**/*.css",
-  minCss: webroot + "css/**/*.min.css",
-  concatJsDest: webroot + "js/site.min.js",
-  concatCssDest: webroot + "css/site.min.css"
+var swallowError = function  (error) {
+    console.log(error.toString());
+    this.emit('end');
 };
 
-gulp.task("clean:js", function (cb) {
-  rimraf(paths.concatJsDest, cb);
+gulp.task('clean', function (done) {
+    return gulp.src([lib+'/js/layout',lib+'/js/bundle'], { read: false }).pipe(rimraf());
 });
 
-gulp.task("clean:css", function (cb) {
-  rimraf(paths.concatCssDest, cb);
+/* MAKING SURE ALL bower.json FILES ARE INSTALLED */
+gulp.task('bower:install', ['clean'], function () {
+    return bower();
 });
 
-gulp.task("clean", ["clean:js", "clean:css"]);
-
-gulp.task("min:js", function () {
-  return gulp.src([paths.js, "!" + paths.minJs], {
-    base: "."
-  })
-    .pipe(concat(paths.concatJsDest))
-    .pipe(uglify())
-    .pipe(gulp.dest("."));
+/* MINIFICATION OF BOWER FILES */
+gulp.task('minifyJs', ['bower:install'], function () {
+    return gulp.src(mainBowerFiles())
+        .pipe(ignore.include(["**/*.js"]))
+        .pipe(uglify())
+        .on('error', swallowError)
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest(lib + '/js/layout'));
 });
 
-gulp.task("min:css", function () {
-  return gulp.src([paths.css, "!" + paths.minCss])
-    .pipe(concat(paths.concatCssDest))
-    .pipe(cssmin())
-    .pipe(gulp.dest("."));
+/* BUNDLING */
+gulp.task('bundleLayout', ['minifyJs'], function () {
+    return gulp.src([
+        lib + '/js/layout/angular.min.js',
+        lib + '/js/layout/ui-bootstrap-tpls.min.js',
+        lib + '/js/layout/angular-cookies.min.js'
+        ])
+        .pipe(concat('layout.js'))
+        .pipe(gulp.dest(lib + '/js/bundle/'));
 });
 
-gulp.task("min", ["min:js", "min:css"]);
+/* MINIFICATION OF CUSTOM JS */
+gulp.task('minifyJsContent', function () {
+    return gulp.src(content + '/js/*.js')
+        .pipe(uglify({ mangle: false }))
+        .on('error', swallowError)
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest(lib + '/js'));
+    
+});
+
+/* MINIFICATION OF CUSTOM CSS */
+gulp.task('minifyCssContent', function () {
+    return gulp.src(content + '/*.css')
+        .pipe(mincss())
+        .on('error', swallowError)
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest(lib + '/css/'));
+});
+
+gulp.task('watch', function () {
+    gulp.watch('bower.json', ['bundleLayout']);
+
+    watch(content + '/js/*.js', function () {
+        gulp.start('minifyJsContent').on('error', swallowError);
+    });
+    watch(content + '/*.css', function () {
+        gulp.start('minifyCssContent').on('error', swallowError);
+    });
+});

@@ -2,6 +2,8 @@
   "name": "gab16search",
   "private": true,
   "dependencies": {
-    "angular": "*"
+     "angular-bootstrap": "1.1.2",
+     "angular": "1.5.0",
+    "angular-cookies": "1.5.0"
   }
 }
