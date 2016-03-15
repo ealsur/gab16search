@@ -21,7 +21,7 @@ namespace gab16search
         {
             services.AddMvc();
             services.AddTransient<ISearchService>(provider =>
-                 new SearchService("","")            
+                 new SearchService("ealsur","6605083F07CF62B49FCA9515D8CB8C9A")         
             );
         }
 
