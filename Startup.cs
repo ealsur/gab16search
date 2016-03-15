@@ -20,6 +20,9 @@ namespace gab16search
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddTransient<ISearchService>(provider =>
+                 new SearchService("","")            
+            );
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
