@@ -12,6 +12,7 @@
     "gulp-rimraf": "0.2.0",
     "gulp-watch": "^4.3.5",
     "main-bower-files": "2.11.1",
-    "gulp-rename": "1.2.2"
+    "gulp-rename": "1.2.2",
+    "eslint":"2.4.0"
   }
 }
