@@ -44,7 +44,8 @@ gulp.task('bundleLayout', ['minifyJs'], function () {
     return gulp.src([
         lib + '/js/layout/angular.min.js',
         lib + '/js/layout/ui-bootstrap-tpls.min.js',
-        lib + '/js/layout/angular-cookies.min.js'
+        lib + '/js/layout/angular-cookies.min.js',
+        lib + '/js/layout/angular-ui-router.min.js'
         ])
         .pipe(concat('layout.js'))
         .pipe(gulp.dest(lib + '/js/bundle/'));
