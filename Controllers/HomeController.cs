@@ -12,5 +12,15 @@ namespace gab16search.Controllers
         {
             return View();
         }
+        
+        public IActionResult Intro()
+        {
+            return View();
+        }
+        
+        public IActionResult Indexes()
+        {
+            return View();
+        }
     }
 }
