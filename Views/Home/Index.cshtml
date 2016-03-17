@@ -22,7 +22,21 @@
                 </div>
                 </div>
         
-            <div class="container" data-ng-show="loaded">
+            <div data-ng-show="loaded">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid nav">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">
+                                <img alt="Brand" src="images/Azure Search.png">
+                            </a>
+                         </div>
+                             <ol class="navbar-text breadcrumb hidden-xs">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Library</a></li>
+  <li class="active">Data</li>
+</ol>
+                    </div>
+                </nav>
                 <ui-view></ui-view>            
             </div>
             <div class="container" data-ng-show="loaded">
