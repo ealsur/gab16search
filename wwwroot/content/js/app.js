@@ -15,7 +15,7 @@
             /*STATE PROVIDER*/
             $stateProvider
                 .state('intro', {
-                    url: '',
+                    url: '/intro',
                     templateUrl: '/Intro',
                     controller: 'StepController',
                     resolve:{step:function(){return 1;}}
@@ -69,7 +69,6 @@
                     controller: 'StepController',
                     resolve:{step:function(){return 9;}}
                 })
-                $urlRouterProvider.otherwise('/intro');
         })
         /****** SERVICES *******/
         .factory('pubsubSystem', function () {

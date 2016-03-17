@@ -63,7 +63,7 @@ gulp.task('minifyJsContent', function () {
 
 /* MINIFICATION OF CUSTOM CSS */
 gulp.task('minifyCssContent', function () {
-    return gulp.src(content + '/*.css')
+    return gulp.src(content + '/css/*.css')
         .pipe(mincss())
         .on('error', swallowError)
         .pipe(rename({ suffix: '.min' }))
@@ -76,7 +76,7 @@ gulp.task('watch', function () {
     watch(content + '/js/*.js', function () {
         gulp.start('minifyJsContent').on('error', swallowError);
     });
-    watch(content + '/*.css', function () {
+    watch(content + '/css/*.css', function () {
         gulp.start('minifyCssContent').on('error', swallowError);
     });
 });
