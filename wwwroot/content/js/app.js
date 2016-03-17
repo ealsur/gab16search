@@ -17,57 +17,47 @@
                 .state('intro', {
                     url: '/intro',
                     templateUrl: '/Intro',
-                    controller: 'StepController',
-                    resolve:{step:function(){return 1;}}
+                    controller: 'StepController'
                 })
                 .state('indexes', {
                     url: '/indexes',
                     templateUrl: '/Indexes',
-                    controller: 'StepController',
-                    resolve:{step:function(){return 2;}}
+                    controller: 'StepController'
                 })
                 .state('facets', {
                     url: '/facets',
                     templateUrl: '/facets',
-                    controller: 'StepController'
-                    ,
-                    resolve:{step:function(){return 3;}}
+                    controller: 'StepController' 
                 })
                 .state('scoring', {
                     url: '/scoring',
                     templateUrl: '/scoring',
-                    controller: 'StepController',
-                    resolve:{step:function(){return 4;}}
+                    controller: 'StepController'
                 })
                 .state('indexers', {
                     url: '/indexes',
                     templateUrl: '/Indexes',
-                    controller: 'StepController',
-                    resolve:{step:function(){return 5;}}
+                    controller: 'StepController'
                 })
                 .state('suggestions', {
                     url: '/suggestions',
                     templateUrl: '/suggestions',
-                    controller: 'StepController',
-                    resolve:{step:function(){return 6;}}
+                    controller: 'StepController'
                 })
                 .state('advanced', {
                     url: '/advanced',
                     templateUrl: '/advanced',
-                    controller: 'StepController',
-                    resolve:{step:function(){return 7;}}
+                    controller: 'StepController'
                 })
                 .state('analytics', {
                     url: '/indexes',
                     templateUrl: '/Indexes',
-                    controller: 'StepController',
-                    resolve:{step:function(){return 8;}}
+                    controller: 'StepController'
                 })
                  .state('end', {
                     url: '/end',
                     templateUrl: '/end',
-                    controller: 'StepController',
-                    resolve:{step:function(){return 9;}}
+                    controller: 'StepController'
                 })
         })
         /****** SERVICES *******/

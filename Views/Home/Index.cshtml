@@ -14,7 +14,7 @@
     </head>
     <body ng-app="searchPlayground">
             <div ng-controller="ChromeController" class="container-fluid">
-                <div data-ng-show="!loaded" class="splash">
+                <div ng-show="!loaded" class="splash">
                 <img src="images/Azure Search.png" class="center-block img-responsive">
                 <div class="text-center">
                 <h1>Azure Search Playground</h1>
@@ -22,7 +22,7 @@
                 </div>
                 </div>
         
-            <div data-ng-show="loaded">
+            <div ng-show="loaded">
                 <nav class="navbar navbar-default">
                     <div class="container-fluid nav">
                         <div class="navbar-header">
@@ -31,17 +31,18 @@
                             </a>
                          </div>
                              <ol class="navbar-text breadcrumb hidden-xs">
-  <li><a href="#">Home</a></li>
-  <li><a href="#">Library</a></li>
-  <li class="active">Data</li>
-</ol>
+                                 <li ng-repeat="crumb in crumbs" ng-class="{'active':$last}">
+                                     <a href="#" ng-if="!$last">{{crumb}}</a>
+                                     <span ng-if="$last">{{crumb}}</span>
+                                 </li>
+                             </ol>
                     </div>
                 </nav>
                 <ui-view></ui-view>            
             </div>
-            <div class="container" data-ng-show="loaded">
-                <button type="button" data-ng-show="step>1">Anterior</button>
-                <button type="button" data-ng-show="masterStep>step">Siguiente</button>
+            <div class="container steps" ng-show="loaded">
+                <button type="button" ng-show="step>1" ng-click="prev()">Anterior</button>
+                <button type="button" @*ng-show="masterStep>step"*@ ng-click="next()">Siguiente</button>
             </div>
         </div>
         <environment names="Development">
