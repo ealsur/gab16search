@@ -33,10 +33,16 @@ namespace gab16search
 
             app.UseMvc(routes =>
             {
+                
                 routes.MapRoute(
                     name: "default",
-                    template: "{action=Index}/{id?}",
-                    defaults: new {controller="Home"});
+                    template: "",
+                    defaults: new {controller="Home", action="Index"});
+                routes.MapRoute(
+                    name: "steps",
+                    template: "{id}",
+                    defaults: new {controller="Home", action="Step"});
+                
             });
         }
 

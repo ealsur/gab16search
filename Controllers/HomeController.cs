@@ -13,14 +13,9 @@ namespace gab16search.Controllers
             return View();
         }
         
-        public IActionResult Intro()
+        public IActionResult Step(string id)
         {
-            return View();
-        }
-        
-        public IActionResult Indexes()
-        {
-            return View();
+            return PartialView(id);
         }
     }
 }

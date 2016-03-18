@@ -14,22 +14,22 @@
         .config(function($stateProvider, $urlRouterProvider){
             /*STATE PROVIDER*/
             $stateProvider
-                .state('intro', {
+                .state('Intro', {
                     url: '/intro',
                     templateUrl: '/Intro',
                     controller: 'StepController'
                 })
-                .state('indexes', {
+                .state('Indexes', {
                     url: '/indexes',
                     templateUrl: '/Indexes',
                     controller: 'StepController'
                 })
-                .state('facets', {
+                .state('Facets', {
                     url: '/facets',
                     templateUrl: '/facets',
                     controller: 'StepController' 
                 })
-                .state('scoring', {
+                .state('Scoring', {
                     url: '/scoring',
                     templateUrl: '/scoring',
                     controller: 'StepController'
