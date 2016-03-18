@@ -2,8 +2,7 @@ html,body{height:100%;}
 body{
 	position:relative;	
 }
-body>.container-fluid{
-    background-color:#eee;   
+body>.container-fluid{   
     height:100%;
 }
 .splash{
@@ -26,8 +25,8 @@ body>.container-fluid{
 .navbar img{
     width:50px;
 }
-.navbar .navbar-text{
-    padding:0 !important;
+.navbar .nav-item{
+    padding-top:1em;
 }
 .navbar-brand{
     padding:0;
@@ -37,4 +36,17 @@ body>.container-fluid{
     position:absolute;
     bottom:0px;
     z-index:20;
+}
+.searchBox{
+    margin-bottom:2em;
+}
+.navbar-nav .nav-item+.nav-item {
+    margin-left: 0.5rem;
+}
+.card-img-top{
+    max-height:200px;
+    overflow:hidden;
+}
+.card-img-top .img-fluid{
+    width:100%;
 }

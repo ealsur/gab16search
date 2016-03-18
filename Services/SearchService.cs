@@ -1,13 +1,14 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using gab16search.ViewModels;
 using Microsoft.Azure.Search;
 using Microsoft.Azure.Search.Models;
 using Newtonsoft.Json;
 
 public interface ISearchService
 {
-    string Search(SearchPayload payload);
+    DocumentSearchResult Search(SearchPayload payload);
 }
 
 public class SearchService:ISearchService
@@ -18,7 +19,7 @@ public class SearchService:ISearchService
         client = new SearchServiceClient(searchAccount, new SearchCredentials(searchKey));     
         indexClient = client.Indexes.GetClient("movies");   
     }    
-    public string Search(SearchPayload payload){
+    public DocumentSearchResult Search(SearchPayload payload){
         var sp = new SearchParameters();
         sp.Top = payload.PageSize;
         sp.Skip = (payload.Page - 1) * payload.PageSize;
@@ -33,6 +34,6 @@ public class SearchService:ISearchService
         if(payload.IncludeFacets){
             sp.Facets = new List<string>(){"year", "rtAllCriticsRating", "actorTags", "genreTags"};
         }
-        return JsonConvert.SerializeObject(indexClient.Documents.Search(payload.Text, sp));
+        return indexClient.Documents.Search(payload.Text, sp);
     }     
 }

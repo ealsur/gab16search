@@ -24,10 +24,10 @@
                     templateUrl: '/Indexes',
                     controller: 'StepController'
                 })
-                .state('Facets', {
+                .state('Facets & Filters', {
                     url: '/facets',
                     templateUrl: '/facets',
-                    controller: 'StepController' 
+                    controller: 'SearchController' 
                 })
                 .state('Scoring', {
                     url: '/scoring',

@@ -27,13 +27,18 @@ namespace gab16search
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.UseDeveloperExceptionPage();
+            
             app.UseIISPlatformHandler();
 
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
             {
-                
+                routes.MapRoute(
+                    name: "search",
+                    template: "search",
+                    defaults: new {controller="Search", action="Search"});
                 routes.MapRoute(
                     name: "default",
                     template: "",

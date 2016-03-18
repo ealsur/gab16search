@@ -16,7 +16,8 @@
     "Microsoft.AspNet.Tooling.Razor": "1.0.0-rc1-final",
     "WindowsAzure.Storage": "6.2.0",
     "Microsoft.Azure.Search": "1.1.0",
-    "Newtonsoft.Json": "8.0.3"
+    "Newtonsoft.Json": "8.0.3",
+    "Microsoft.AspNet.Diagnostics.Entity": "7.0.0-rc1-final"
   },
 
   "commands": {
