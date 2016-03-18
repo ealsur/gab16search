@@ -37,7 +37,7 @@
             <div class="card-columns">
                 <div class="card" ng-repeat="item in results.Results">
                     <div class="card-img-top">
-                        <img class="img-fluid" src="{{curateUrl(item.Document.imdbPictureURL)}}" alt="Card image cap">
+                        <img class="img-fluid" ng-src="{{curateUrl(item.Document.imdbPictureURL)}}" alt="Card image cap">
                     </div>                    
                     <div class="card-block">
                         <h4 class="card-title">{{item.Document.title}}</h4>
