@@ -25,7 +25,7 @@
         <div ng-repeat="(key, value) in results.Facets" class="list-group-item">
             <h4 class="list-group-item-heading">{{key}}</h4>
             <ul>
-                <li ng-repeat="filtro in value">{{filtro.value}} ({{filtro.count}})</li>
+                <li ng-repeat="filtro in value" ng-if="filtro.value">{{filtro.value}} ({{filtro.count}})</li>
             </ul>
         </div>
         </div>
