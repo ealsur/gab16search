@@ -19,13 +19,21 @@
 
 <div class="container">
     <div class="col-sm-3">
+        <div class="well" data-ng-show="filters">
+        <h4>Filtros aplicados</h4>
+        <div class="list-group">
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="(key, value) in filters"><a href="#" ng-click="filter($event, key, value)"><span class="fa fa-minus-circle"></span></a> {{getDescriptionByKey(key)}} {{value}}</li>                        
+        </div>
+        </div>
+        
         <div class="well">
         <h4>Filtros disponibles</h4>
         <div class="list-group">
         <div ng-repeat="(key, value) in results.Facets" class="list-group-item">
-            <h4 class="list-group-item-heading">{{key}}</h4>
-            <ul>
-                <li ng-repeat="filtro in value" ng-if="filtro.value">{{filtro.value}} <span class="label label-default label-pill pull-right">{{filtro.count}}</span></li>
+            <h4 class="list-group-item-heading">{{getDescriptionByKey(key)}}</h4>
+            <ul class="list-unstyled">
+                <li ng-repeat="filtro in value" ng-if="filtro.value"><a href="#" ng-click="filter($event, key, filtro.value)"><span class="fa fa-filter"></span> {{filtro.value}}</a> <span class="label label-default label-pill pull-right">{{filtro.count}}</span></li>
             </ul>
         </div>
         </div>
