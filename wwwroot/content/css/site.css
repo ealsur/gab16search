@@ -50,3 +50,7 @@ body>.container-fluid{
 .card-img-top .img-fluid{
     width:100%;
 }
+.card-columns .card{
+    box-shadow: 2px 2px;
+    background-color: #ddd;
+}
