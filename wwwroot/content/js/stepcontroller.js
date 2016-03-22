@@ -53,7 +53,7 @@
             }
         }).then(function success(response) {
             $scope.results= response.data;
-            console.log(response.data);
+            pubsubSystem.publish('log', response.data);
             $scope.searching=false;
         }, function error() {
             ;
