@@ -21,22 +21,16 @@
     <div class="col-sm-3" ng-show="results.Count">
         <div class="card card-block" data-ng-show="filters">
         <h4  class="card-title">Filtros aplicados</h4>
-        <div class="list-group">
-        <ul class="list-group">
-            <li class="list-group-item" ng-repeat="(key, value) in filters"><a href="#" ng-click="filter($event, key, value)"><span class="fa fa-minus-circle"></span></a> {{getDescriptionByKey(key)}} {{value}}</li>                        
-        </div>
+        <ul  class="list-unstyled">
+            <li ng-repeat="(key, value) in filters"><a href="#" ng-click="filter($event, key, value)"><span class="fa fa-minus-circle"></span></a> {{getDescriptionByKey(key)}} {{value}}</li>
+        </ul>                        
         </div>
         
-        <div class="card card-block">
-        <h4 class="card-title">Filtros disponibles</h4>
-        <div class="list-group">
-        <div ng-repeat="(key, value) in results.Facets" class="list-group-item">
-            <h4 class="list-group-item-heading">{{getDescriptionByKey(key)}}</h4>
-            <ul class="list-unstyled">
-                <li ng-repeat="filtro in value" ng-if="filtro.value"><a href="#" ng-click="filter($event, key, filtro.value)"><span class="fa fa-filter"></span> {{filtro.value}}</a> <span class="label label-default label-pill pull-right">{{filtro.count}}</span></li>
-            </ul>
-        </div>
-        </div>
+        <div class="card card-block"  ng-repeat="(key, value) in results.Facets">
+        <h4  class="card-title">{{getDescriptionByKey(key)}}</h4>
+        <ul  class="list-unstyled">
+            <li ng-repeat="filtro in value" ng-if="filtro.value"><a href="#" ng-click="filter($event, key, filtro.value)"><span class="fa fa-filter"></span> {{filtro.value}}</a> <span class="label label-default label-pill pull-right">{{filtro.count}}</span></li>
+        </ul>                        
         </div>
     </div>
     <div class="col-sm-9">
@@ -69,8 +63,8 @@
         </div>
         <nav class="clearfix" ng-show="results.Count > 0">
             <ul class="pager">
-                <li class="pager-prev"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
-                <li class="pager-next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+                <li class="pager-prev" ng-show="page > 1"><a href="#" ng-click="prev($event)"><span aria-hidden="true">&larr;</span> Older</a></li>
+                <li class="pager-next"><a href="#" ng-click="next($event)">Newer <span aria-hidden="true">&rarr;</span></a></li>
             </ul>
         </nav>
         </div>

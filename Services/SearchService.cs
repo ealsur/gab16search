@@ -4,7 +4,6 @@ using System.Linq;
 using gab16search.ViewModels;
 using Microsoft.Azure.Search;
 using Microsoft.Azure.Search.Models;
-using Newtonsoft.Json;
 
 public interface ISearchService
 {

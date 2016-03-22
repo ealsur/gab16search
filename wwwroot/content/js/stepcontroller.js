@@ -11,7 +11,7 @@
        $scope.searchText = '';
        $scope.searching=false;
        $scope.filters=null;
-       
+       $scope.page = 1;
        $scope.getDescriptionByKey = function(key){
             switch(key){
                 case "year": return "Año";
@@ -37,7 +37,14 @@
              }
              $scope.search($event);
          };
-       
+       $scope.next = function($event){
+           $scope.page++;
+           $scope.search($event);
+       };
+       $scope.prev = function($event){
+           $scope.page--;
+           $scope.search($event);
+       };
        $scope.search = function($event){
          $event.preventDefault();  
          $scope.searching=true;
@@ -49,7 +56,8 @@
             data: {
                 Text: $scope.searchText,
                 Filters:$scope.filters,
-                IncludeFacets:true
+                IncludeFacets:true,
+                Page:$scope.page
             }
         }).then(function success(response) {
             $scope.results= response.data;
