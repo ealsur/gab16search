@@ -58,7 +58,7 @@
                     <div class="card-block">
                         <h4 class="card-title">{{item.Document.title}}</h4>
                         <p class="card-text">Año: {{item.Document.year}}</p>
-                        <p class="card-text">Géneros: <span class="label label-default label-pill" ng-repeat="genre in item.Document.genreTags">{{genre}}</span></p>
+                        <p class="card-text">Géneros: <a href="#" class="label label-default label-pill" ng-click="filter($event, 'genreTags', genre)" ng-repeat="genre in item.Document.genreTags">{{genre}}</a></p>
                         <a href="http://www.imdb.com/title/tt{{item.Document.imdbID}}" class="card-link" target="_blank">Ver en Imdb</a>
                         <p class="card-text"><small class="text-muted"><strong>Score</strong> {{item.Score}}</small></p>
                     </div>

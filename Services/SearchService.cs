@@ -24,7 +24,7 @@ public class SearchService:ISearchService
         sp.Top = payload.PageSize;
         sp.Skip = (payload.Page - 1) * payload.PageSize;
         if(payload.Filters!=null){
-            sp.Filter = string.Join(",", payload.Filters.Select(x=>string.Format("{0} eq {1}", x.Key, NeedsStringDelimiter(x.Value)?string.Format("'{0}'",x.Value):x.Value)).ToArray());
+            sp.Filter = string.Join(" and ", payload.Filters.Select(x=> GetFilterExpression(x.Key, x.Value)).ToArray());
         }
         sp.OrderBy = payload.OrderBy.Split(',');
         sp.QueryType = payload.QueryType;
@@ -44,15 +44,16 @@ public class SearchService:ISearchService
         return indexClient.Documents.Search(payload.Text, sp);
     }
     
-    private bool NeedsStringDelimiter(string value){
-        int i;
-        if(int.TryParse(value, out i)){
-            return false;
+    private string GetFilterExpression(string key, string value){
+        switch (key) {
+            case "year":
+            case "rtAllCriticsRating":
+                 return string.Format("{0} eq {1}", key, value);
+             
+            case "actorTags":
+            case "genreTags":
+                return string.Format("{0}/any(t: t eq '{1}') ", key, value);
         }
-        double d;
-        if(double.TryParse(value, out d)){
-            return false;
-        }
-        return true;
+        return string.Empty;
     }     
 }
