@@ -62,8 +62,8 @@
         <div  class="col-xs-12" ng-show="!searching && results.Count > 0">
         <h4>Hay <strong>{{results.Count}}</strong> resultados de búsqueda</h4>           
         <div class="col-xs-12">
-            <div class="card-columns">
-                <div class="card" ng-repeat="item in results.Results">
+            
+                <div class="card col-sm-6 col-xs-12 result-item" ng-repeat="item in results.Results">
                     <div class="card-img-top">
                         <img class="img-fluid" ng-src="{{curateUrl(item.Document.imdbPictureURL)}}" alt="Card image cap">
                     </div>                    
@@ -72,7 +72,7 @@
                         
                         <small class="text-muted">{{item.Document.spanishTitle}}</small>
                         <p class="card-text">Año: {{item.Document.year}}</p>
-                        <p class="card-text">Crítica: {{item.Document.rtAllCriticsRating}}</p>
+                        <p class="card-text">Puntaje: {{item.Document.rtAllCriticsRating}}</p>
                         <p class="card-text">Géneros: <a href="#" class="label label-default label-pill" ng-click="filter($event, 'genreTags', genre)" ng-repeat="genre in item.Document.genreTags">{{genre}}</a></p>
                         <a href="http://www.imdb.com/title/tt{{item.Document.imdbID}}" class="card-link" target="_blank">Ver en Imdb</a>
                         <p class="card-text"><small class="text-muted"><strong>Score</strong> {{item.Score}}</small></p>
@@ -80,7 +80,7 @@
 
                 </div>
 
-            </div>
+            
         </div>
         <nav class="clearfix" ng-show="results.Count > 0">
             <ul class="pager">
