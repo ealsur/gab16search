@@ -1,6 +1,6 @@
 <div class="container searchBox">
     <div class="page-header hero">
-        <h1><small><span class="glyphicon glyphicon-th-list"></span></small> Facets y Filters</h1>
+        <h1><small><span class="glyphicon glyphicon-th-list"></span></small> Scoring Profiles</h1>
     </div>
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
         <form>
@@ -12,28 +12,43 @@
                <button class="btn btn-primary" type="submit" ng-click="search($event)" ng-disabled="searching">Buscar</button>
             </div>
             
-        </div>         
-    </div>
-  </div>
-
+        </div>
         </form>
     </div>
 </div>    
 
 <div class="container" >
-    <div class="col-sm-3" ng-show="results.Count">
-        <div class="card card-block" ng-show="filters">
-        <h4  class="card-title">Filtros aplicados</h4>
-        <ul  class="list-unstyled">
-            <li ng-repeat="(key, value) in filters"><a href="#" ng-click="filter($event, key, value)"><span class="fa fa-minus-circle"></span></a> {{getDescriptionByKey(key)}} {{value}}</li>
-        </ul>                        
-        </div>
+    <div class="col-sm-3">
+        <div class="card card-block">
+        <h4  class="card-title">Perfiles</h4>
         
-        <div class="card card-block"  ng-repeat="(key, value) in results.Facets">
-        <h4  class="card-title">{{getDescriptionByKey(key)}}</h4>
-        <ul  class="list-unstyled">
-            <li ng-repeat="filtro in value" ng-if="filtro.value"><a href="#" ng-click="filter($event, key, filtro.value)"><span class="fa fa-filter"></span> {{filtro.value}}</a> <span class="label label-default label-pill pull-right">{{filtro.count}}</span></li>
-        </ul>                        
+        <div class="c-inputs-stacked">
+        <label class="c-input c-radio">
+        <input name="profile" type="radio" ng-model="profile" value="" ng-change="search($event)">
+        <span class="c-indicator"></span>
+        Default
+        </label>
+        <label class="c-input c-radio">
+        <input name="profile" type="radio" ng-model="profile" value="ByActor" ng-change="search($event)">
+        <span class="c-indicator"></span>
+        Sólo actores
+        </label>       
+        <label class="c-input c-radio">
+        <input name="profile" type="radio" ng-model="profile" value="Newer" ng-change="search($event)">
+        <span class="c-indicator"></span>
+        Más nuevas
+        </label>
+        <label class="c-input c-radio">
+        <input name="profile" type="radio" ng-model="profile" value="Critics" ng-change="search($event)">
+        <span class="c-indicator"></span>
+        Mejores críticas
+        </label> 
+        <label class="c-input c-radio">
+        <input name="profile" type="radio" ng-model="profile" value="Complete" ng-change="search($event)">
+        <span class="c-indicator"></span>
+        Completo
+        </label>   
+        </div>      
         </div>
     </div>
     <div class="col-sm-9">
@@ -54,7 +69,10 @@
                     </div>                    
                     <div class="card-block">
                         <h4 class="card-title">{{item.Document.title}}</h4>
+                        
+                        <small class="text-muted">{{item.Document.spanishTitle}}</small>
                         <p class="card-text">Año: {{item.Document.year}}</p>
+                        <p class="card-text">Crítica: {{item.Document.rtAllCriticsRating}}</p>
                         <p class="card-text">Géneros: <a href="#" class="label label-default label-pill" ng-click="filter($event, 'genreTags', genre)" ng-repeat="genre in item.Document.genreTags">{{genre}}</a></p>
                         <a href="http://www.imdb.com/title/tt{{item.Document.imdbID}}" class="card-link" target="_blank">Ver en Imdb</a>
                         <p class="card-text"><small class="text-muted"><strong>Score</strong> {{item.Score}}</small></p>

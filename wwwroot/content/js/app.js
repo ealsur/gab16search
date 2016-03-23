@@ -32,7 +32,7 @@
                 .state('Scoring', {
                     url: '/scoring',
                     templateUrl: '/scoring',
-                    controller: 'StepController'
+                    controller: 'ScoringController'
                 })
                 .state('indexers', {
                     url: '/indexes',

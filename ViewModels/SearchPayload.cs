@@ -20,5 +20,7 @@ namespace gab16search.ViewModels
         public SearchMode SearchMode { get; set; } = SearchMode.Any;
         
         public string ScoringProfile { get; set; }
+        
+        public string ScoringParameter { get; set; }
     }
 }

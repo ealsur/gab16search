@@ -68,4 +68,44 @@
         });
        };
     })
+    .controller('ScoringController',
+    function($scope, pubsubSystem, $http){
+       $scope.searchText = '';
+       $scope.searching=false;
+       $scope.page = 1;
+    $scope.profile='';
+         $scope.curateUrl = function(url){
+           return url.replace(/"/g,'');  
+         };
+       $scope.next = function($event){
+           $scope.page++;
+           $scope.search($event);
+       };
+       $scope.prev = function($event){
+           $scope.page--;
+           $scope.search($event);
+       };
+       $scope.search = function($event){
+         $event && $event.preventDefault();  
+         $scope.searching=true;
+         $scope.results=null;
+        
+         $http({
+            method: 'POST',
+            url: '/search',
+            data: {
+                Text: $scope.searchText,
+                ScoringProfile:$scope.profile,
+                ScoringParameter:'Action',
+                Page:$scope.page
+            }
+        }).then(function success(response) {
+            $scope.results= response.data;
+            pubsubSystem.publish('log', response.data);
+            $scope.searching=false;
+        }, function error() {
+            ;
+        });
+       };
+    })
 })();
