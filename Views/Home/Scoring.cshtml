@@ -62,8 +62,8 @@
         <div  class="col-xs-12" ng-show="!searching && results.Count > 0">
         <h4>Hay <strong>{{results.Count}}</strong> resultados de búsqueda</h4>           
         <div class="col-xs-12">
-            
-                <div class="card col-sm-6 col-xs-12 result-item" ng-repeat="item in results.Results">
+            <div class="col-sm-6 col-xs-12" ng-repeat="item in results.Results">
+                <div class="card result-item" >
                     <div class="card-img-top">
                         <img class="img-fluid" ng-src="{{curateUrl(item.Document.imdbPictureURL)}}" alt="Card image cap">
                     </div>                    
@@ -79,7 +79,7 @@
                     </div>
 
                 </div>
-
+           </div>
             
         </div>
         <nav class="clearfix" ng-show="results.Count > 0">
