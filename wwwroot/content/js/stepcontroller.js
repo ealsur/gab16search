@@ -96,7 +96,7 @@
             data: {
                 Text: $scope.searchText,
                 ScoringProfile:$scope.profile,
-                ScoringParameter:'Action',
+                ScoringParameter:($scope.profile=="Complete"?'Action':null),
                 Page:$scope.page
             }
         }).then(function success(response) {
