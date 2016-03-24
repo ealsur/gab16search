@@ -1,3 +1,4 @@
+using System.Linq;
 using gab16search.ViewModels;
 using Microsoft.AspNet.Mvc;
 
@@ -16,5 +17,11 @@ namespace gab16search.Controllers
             return Json(_searchService.Search(payload));
         }
         
+        [HttpGet]
+        public IActionResult Suggest(string term, bool fuzzy = true)
+        {
+            var response = _searchService.Suggest(term, fuzzy); 
+            return Json(response);  
+        }
     }
 }

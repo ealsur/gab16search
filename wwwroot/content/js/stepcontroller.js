@@ -108,4 +108,23 @@
         });
        };
     })
+    .controller('SuggestionController',
+    function($scope, pubsubSystem, $http){
+       $scope.noResults=false;
+       $scope.loading=false;
+       $scope.fuzzy = 'true';
+       $scope.asyncSelected=null;
+      $scope.getSuggestions = function(text){
+         return $http({
+            method: 'GET',
+            url: '/search/suggest?term='+text+'&fuzzy='+$scope.fuzzy
+        }).then(function (response) {
+            pubsubSystem.publish('log', response.data);
+            var map= response.data.Results.map(function(item){
+                return item.Text;
+            });
+            return map;
+        });
+      };
+    })
 })();

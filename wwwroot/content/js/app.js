@@ -34,15 +34,15 @@
                     templateUrl: '/scoring',
                     controller: 'ScoringController'
                 })
-                .state('indexers', {
-                    url: '/indexes',
-                    templateUrl: '/Indexes',
+                .state('Indexers', {
+                    url: '/indexers',
+                    templateUrl: '/Indexers',
                     controller: 'StepController'
                 })
-                .state('suggestions', {
+                .state('Suggestions', {
                     url: '/suggestions',
                     templateUrl: '/suggestions',
-                    controller: 'StepController'
+                    controller: 'SuggestionController'
                 })
                 .state('advanced', {
                     url: '/advanced',

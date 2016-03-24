@@ -8,6 +8,7 @@ using Microsoft.Azure.Search.Models;
 public interface ISearchService
 {
     DocumentSearchResult Search(SearchPayload payload);
+    DocumentSuggestResult Suggest(string term, bool fuzzy);
 }
 
 public class SearchService:ISearchService
@@ -18,6 +19,14 @@ public class SearchService:ISearchService
         client = new SearchServiceClient(searchAccount, new SearchCredentials(searchKey));     
         indexClient = client.Indexes.GetClient("movies");   
     }    
+    
+    public DocumentSuggestResult Suggest(string term, bool fuzzy){
+        SuggestParameters sp = new SuggestParameters();
+        sp.Top = 5;
+        sp.UseFuzzyMatching=fuzzy;
+        return indexClient.Documents.Suggest(term, "suggester", sp);
+    }
+    
     public DocumentSearchResult Search(SearchPayload payload){
         var sp = new SearchParameters();
         sp.Top = payload.PageSize;

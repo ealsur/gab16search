@@ -37,7 +37,7 @@ namespace gab16search
             {
                 routes.MapRoute(
                     name: "search",
-                    template: "search",
+                    template: "search/{action}",
                     defaults: new {controller="Search", action="Search"});
                 routes.MapRoute(
                     name: "default",

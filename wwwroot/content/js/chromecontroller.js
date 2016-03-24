@@ -15,7 +15,6 @@
         });
         var states = $state.get();
         $scope.next = function(){
-            console.log(states);
             $scope.step = $scope.step + 1;
             var nextState=states[$scope.step].name;
              $scope.crumbs.push(nextState);

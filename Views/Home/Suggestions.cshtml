@@ -1,0 +1,29 @@
+<div class="container searchBox">
+    <div class="page-header hero">
+        <h1>Suggestions</h1>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <div class="input-group">
+            <label class="c-input c-radio">
+            <input name="fuzzy" type="radio" ng-model="fuzzy" value="true">
+            <span class="c-indicator"></span>
+            Fuzzy habilitado
+            </label>
+            <label class="c-input c-radio">
+            <input name="fuzzy" type="radio" ng-model="fuzzy" value="false">
+            <span class="c-indicator"></span>
+            Fuzzy deshabilitado
+            </label>
+            </div>
+        <div class="input-group typeahead">
+            
+            <span class="input-group-addon"><span class="fa fa-search"></span></span>
+            <input type="text" ng-model="asyncSelected" placeholder="Comience a escribir para recibir sugerencias" uib-typeahead="text for text in getSuggestions($viewValue)" typeahead-loading="loading" typeahead-no-results="noResults" class="form-control">
+            <span class="input-group-addon" ng-show="loading"><span  class="fa fa-spin fa-refresh"></span></span>
+            
+        </div>
+        <div ng-show="noResults" class="alert alert-warning">
+        <i class="fa fa-remove"></i> Sin resultados
+        </div>
+    </div>
+</div>
