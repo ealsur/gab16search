@@ -50,8 +50,8 @@
                     controller: 'AdvancedController'
                 })
                 .state('analytics', {
-                    url: '/indexes',
-                    templateUrl: '/Indexes',
+                    url: '/analytics',
+                    templateUrl: '/analytics',
                     controller: 'StepController'
                 })
                  .state('end', {
