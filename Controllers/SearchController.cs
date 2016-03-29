@@ -1,4 +1,3 @@
-using System.Linq;
 using gab16search.ViewModels;
 using Microsoft.AspNet.Mvc;
 
