@@ -35,7 +35,7 @@ public class SearchService:ISearchService
             sp.Filter = string.Join(" and ", payload.Filters.Select(x=> GetFilterExpression(x.Key, x.Value)).ToArray());
         }
         sp.OrderBy = payload.OrderBy.Split(',');
-        sp.QueryType = payload.QueryType;
+        sp.QueryType = "full".Equals(payload.QueryType)?QueryType.Full:QueryType.Simple;
         sp.SearchMode = payload.SearchMode;
         if(!string.IsNullOrEmpty(payload.ScoringProfile)){
             sp.ScoringProfile = payload.ScoringProfile;    

@@ -15,7 +15,7 @@ namespace gab16search.ViewModels
         
         public string OrderBy { get; set; } = "";
         
-        public QueryType QueryType { get; set; } = QueryType.Simple;
+        public string QueryType { get; set; } = "simple";
         
         public SearchMode SearchMode { get; set; } = SearchMode.Any;
         

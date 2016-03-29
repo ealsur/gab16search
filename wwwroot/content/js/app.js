@@ -44,10 +44,10 @@
                     templateUrl: '/suggestions',
                     controller: 'SuggestionController'
                 })
-                .state('advanced', {
+                .state('Advanced Querying', {
                     url: '/advanced',
                     templateUrl: '/advanced',
-                    controller: 'StepController'
+                    controller: 'AdvancedController'
                 })
                 .state('analytics', {
                     url: '/indexes',
