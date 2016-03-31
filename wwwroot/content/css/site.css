@@ -79,3 +79,6 @@ body>.container-fluid{
     border-radius: 0;
     box-shadow: none;
   }
+  .bottombar a{
+      color:white;
+  }

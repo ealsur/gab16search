@@ -49,12 +49,17 @@
                     templateUrl: '/advanced',
                     controller: 'AdvancedController'
                 })
-                .state('analytics', {
+                .state('Analytics', {
                     url: '/analytics',
                     templateUrl: '/analytics',
                     controller: 'StepController'
                 })
-                 .state('end', {
+                .state('Free!', {
+                    url: '/try',
+                    templateUrl: '/try',
+                    controller: 'StepController'
+                })
+                 .state('Gracias!', {
                     url: '/end',
                     templateUrl: '/end',
                     controller: 'StepController'
