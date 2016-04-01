@@ -40,9 +40,13 @@
                 
                 <ui-view></ui-view>            
             </div>
-            <div class="container steps" ng-show="loaded">
-                <button type="button" ng-show="step>1" ng-click="prev()">Anterior</button>
-                <button type="button" @*ng-show="masterStep>step"*@ ng-click="next()">Siguiente</button>
+            <div class="steps" ng-show="loaded">
+                <div class="pull-xs-left bg-primary">
+                    <button type="button" ng-show="step>1" ng-click="prev()" >Anterior</button>
+                </div>
+                <div class="pull-xs-right bg-primary">
+                    <button type="button" @*ng-show="masterStep>step"*@ ng-click="next()">Siguiente</button>
+                </div>
             </div>
             
             

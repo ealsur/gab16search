@@ -33,9 +33,30 @@ body>.container-fluid{
     margin-left:1em !important;
 }
 .steps{
-    position:absolute;
-    bottom:0px;
+    position:fixed;
+    width:100%;
+    left:0px;
+    top:50%;
     z-index:20;
+    margin-top:-40px;
+}
+
+.steps>div{
+    width:60px;
+    height:80px; 
+    border-radius: 60px 0 0 60px;
+     -moz-border-radius: 60px 0 0 60px;
+     -webkit-border-radius: 60px 0 0 60px;   
+}
+.steps>div.pull-xs-right{
+    border-radius: 60px 0 0 60px;
+     -moz-border-radius: 60px 0 0 60px;
+     -webkit-border-radius: 60px 0 0 60px;   
+}
+.steps>div.pull-xs-left{
+    border-radius: 0 60px 60px 0;
+     -moz-border-radius: 0 60px 60px 0;
+     -webkit-border-radius: 0 60px 60px 0;   
 }
 .searchBox{
     margin-bottom:2em;
