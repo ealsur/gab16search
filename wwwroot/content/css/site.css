@@ -82,3 +82,9 @@ body>.container-fluid{
   .bottombar a{
       color:white;
   }
+  .jsonViewerHolder{
+      width:100%;
+      height:400px;
+      overflow: scroll;
+  }
+  

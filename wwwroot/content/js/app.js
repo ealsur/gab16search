@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-    angular.module('searchPlayground', ['ui.bootstrap', 'ngCookies', 'ui.router'])
+    angular.module('searchPlayground', ['ui.bootstrap', 'ngCookies', 'ui.router','jsonFormatter'])
         .config(['$httpProvider', function ($httpProvider) {
 		    /*DISABLING CACHE FOR GETS*/
 		    if (!$httpProvider.defaults.headers.get) {
