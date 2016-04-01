@@ -15,15 +15,14 @@
         </environment>
     </head>
     <body ng-app="searchPlayground">
-            <div ng-controller="ChromeController" class="container-fluid">
-                <div ng-show="!loaded" class="splash">
+    <div ng-controller="ChromeController" class="container-fluid">
+            <div ng-show="!loaded" class="splash">
                 <img src="images/Azure Search.png" class="center-block img-responsive">
                 <div class="text-xs-center">
-                <h1>Azure Search Playground</h1>
-                <img src="images/loader.gif" class="center-block">
+                    <h1>Azure Search Playground</h1>
+                    <img src="images/loader.gif" class="center-block">
                 </div>
-                </div>
-        
+            </div>
             <div ng-show="loaded" class="container-fluid">
                 <nav class="navbar navbar-dark bg-inverse">
                     <a class="navbar-brand" href="#"><img alt="Brand" src="images/Azure Search.png"></a>
@@ -34,6 +33,7 @@
                             </li>
                         </ol>
                 </nav>
+                
                 <ui-view></ui-view>            
             </div>
             <div class="container steps" ng-show="loaded">
@@ -46,6 +46,7 @@
             <script src="~/lib/js/layout/angular-cookies.min.js"></script>
             <script src="~/lib/js/layout/ui-bootstrap-tpls.min.js"></script>
             <script src="~/lib/js/layout/angular-ui-router.min.js"></script>
+            <script src="~/lib/js/layout/json-formatter.min.js"></script>
             <script src="~/content/js/app.js"></script>
             <script src="~/content/js/chromecontroller.js"></script>
             <script src="~/content/js/stepcontroller.js"></script>
