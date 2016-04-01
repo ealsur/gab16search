@@ -26,7 +26,13 @@
              $scope.crumbs.push(nextState);
             $state.go(nextState);
         }
-        
+         $scope.prev = function(){
+            $scope.currentLog= null;
+            $scope.step = $scope.step - 1;
+            var nextState=states[$scope.step].name;
+             $scope.crumbs.pop();
+            $state.go(nextState);
+        }
         $timeout(function(){
             $scope.loaded=true;
             $scope.next();
