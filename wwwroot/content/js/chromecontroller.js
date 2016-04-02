@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 (function () {
     angular.module('searchPlayground')
@@ -19,20 +19,22 @@
             $scope.$apply();
         });
         var states = $state.get();
-        $scope.next = function(){
+        $scope.next = function($event){
+            $event.preventDefault();
             $scope.currentLog= null;
             $scope.step = $scope.step + 1;
             var nextState=states[$scope.step].name;
              $scope.crumbs.push(nextState);
             $state.go(nextState);
-        }
-         $scope.prev = function(){
+        };
+         $scope.prev = function($event){
+             $event.preventDefault();
             $scope.currentLog= null;
             $scope.step = $scope.step - 1;
             var nextState=states[$scope.step].name;
              $scope.crumbs.pop();
             $state.go(nextState);
-        }
+        };
         $timeout(function(){
             $scope.loaded=true;
             $scope.next();

@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 (function () {
     angular.module('searchPlayground')
@@ -26,11 +26,11 @@
          };
          $scope.filter = function($event, filter, value){
              $event.preventDefault();
-             if($scope.filters != null && $scope.filters.hasOwnProperty(filter)){
+             if($scope.filters !== null && $scope.filters.hasOwnProperty(filter)){
                  delete $scope.filters[filter];
              }
              else{
-                 if($scope.filters==null){
+                 if($scope.filters===null){
                      $scope.filters={};
                  }
                  $scope.filters[filter] = value;
@@ -64,7 +64,7 @@
             pubsubSystem.publish('log', response.data);
             $scope.searching=false;
         }, function error() {
-            ;
+            
         });
        };
     })
@@ -162,8 +162,8 @@
             pubsubSystem.publish('log', response.data);
             $scope.searching=false;
         }, function error() {
-            ;
+            
         });
        };
-    })
+    });
 })();

@@ -34,18 +34,18 @@
                                 <span ng-if="!$last" class="text-muted">{{crumb}} &gt;</span>
                                 <span ng-if="$last">{{crumb}}</span>
                             </li>
-                        </ol>
+                        </ul>
                     <div class="logCaller pull-xs-right" data-ng-show="currentLog"><button class="btn btn-primary" data-toggle="modal" data-target="#jsonViewer"><span class="fa fa-eye"></span></button></div>
                 </nav>
                 
                 <ui-view></ui-view>            
             </div>
             <div class="steps" ng-show="loaded">
-                <div class="pull-xs-left bg-primary">
-                    <button type="button" ng-show="step>1" ng-click="prev()" >Anterior</button>
+                <div class="pull-xs-left bg-primary" ng-show="step>1">
+                    <a href="#" ng-click="prev($event)"><span class="fa fa-chevron-circle-left fa-2x"></span></a>
                 </div>
                 <div class="pull-xs-right bg-primary">
-                    <button type="button" @*ng-show="masterStep>step"*@ ng-click="next()">Siguiente</button>
+                    <a href="#" @*ng-show="masterStep>step"*@ ng-click="next($event)"><span class="fa fa-chevron-circle-right fa-2x"></span></a>
                 </div>
             </div>
             

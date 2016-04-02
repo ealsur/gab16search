@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 (function () {
     angular.module('searchPlayground', ['ui.bootstrap', 'ngCookies', 'ui.router','jsonFormatter'])

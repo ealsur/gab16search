@@ -44,19 +44,22 @@ body>.container-fluid{
 .steps>div{
     width:60px;
     height:80px; 
-    border-radius: 60px 0 0 60px;
-     -moz-border-radius: 60px 0 0 60px;
-     -webkit-border-radius: 60px 0 0 60px;   
+    padding-top:24px;
+    padding-left:11px;
 }
 .steps>div.pull-xs-right{
     border-radius: 60px 0 0 60px;
      -moz-border-radius: 60px 0 0 60px;
      -webkit-border-radius: 60px 0 0 60px;   
+     padding-left:20px;
 }
 .steps>div.pull-xs-left{
     border-radius: 0 60px 60px 0;
      -moz-border-radius: 0 60px 60px 0;
      -webkit-border-radius: 0 60px 60px 0;   
+}
+.steps a,.steps a:visited{
+    color:white;
 }
 .searchBox{
     margin-bottom:2em;
