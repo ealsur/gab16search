@@ -15,7 +15,7 @@
             /*STATE PROVIDER*/
             $stateProvider
                 .state('Intro', {
-                    url: '/intro',
+                    url: '',
                     templateUrl: '/Intro',
                     controller: 'StepController'
                 })
@@ -63,7 +63,7 @@
                     url: '/end',
                     templateUrl: '/end',
                     controller: 'StepController'
-                })
+                });
         })
         /****** SERVICES *******/
         .factory('pubsubSystem', function () {

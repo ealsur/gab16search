@@ -18,7 +18,7 @@
         </environment>
     </head>
     <body ng-app="searchPlayground">
-    <div ng-controller="ChromeController" class="container-fluid">
+    <div ng-controller="ChromeController" class="container-fluid" >
             <div ng-show="!loaded" class="splash">
                 <img src="images/Azure Search.png" class="center-block img-responsive">
                 <div class="text-xs-center">
@@ -26,7 +26,7 @@
                     <img src="images/loader.gif" class="center-block">
                 </div>
             </div>
-            <div ng-show="loaded" class="container-fluid">
+            <div ng-show="loaded" class="container-fluid" ng-cloak>
                 <nav class="navbar navbar-dark bg-inverse">
                     <a class="navbar-brand" href="#"><img alt="Brand" src="images/Azure Search.png"></a>
                     <ul class="nav navbar-nav hidden-xs">
@@ -36,11 +36,10 @@
                             </li>
                         </ul>
                     <div class="logCaller pull-xs-right" data-ng-show="currentLog"><button class="btn btn-primary" data-toggle="modal" data-target="#jsonViewer"><span class="fa fa-eye"></span></button></div>
-                </nav>
-                
+                </nav>                
                 <ui-view></ui-view>            
             </div>
-            <div class="steps" ng-show="loaded">
+            <div class="steps" ng-show="loaded" ng-cloak>
                 <div class="pull-xs-left bg-primary" ng-show="step>1">
                     <a href="#" ng-click="prev($event)"><span class="fa fa-chevron-circle-left fa-2x"></span></a>
                 </div>
