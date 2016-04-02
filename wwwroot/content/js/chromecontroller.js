@@ -24,7 +24,10 @@
             $scope.currentLog= null;
             $scope.step = $scope.step + 1;
             var nextState=states[$scope.step].name;
-             $scope.crumbs.push(nextState);
+            if(nextState!==''){
+             $scope.crumbs.push(nextState);   
+            }
+             
             $state.go(nextState);
         };
          $scope.prev = function($event){

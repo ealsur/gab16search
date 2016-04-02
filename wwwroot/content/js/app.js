@@ -14,8 +14,13 @@
         .config(function($stateProvider, $urlRouterProvider){
             /*STATE PROVIDER*/
             $stateProvider
-                .state('Intro', {
+                .state('', {
                     url: '',
+                    templateUrl: '/SearchBox',
+                    controller: 'StepController'
+                })
+                .state('Intro', {
+                    url: '/intro',
                     templateUrl: '/Intro',
                     controller: 'StepController'
                 })
