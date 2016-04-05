@@ -74,6 +74,7 @@
        $scope.searching=false;
        $scope.page = 1;
     $scope.profile='';
+    $scope.tag='';
          $scope.curateUrl = function(url){
            return url.replace(/"/g,'');  
          };
@@ -96,7 +97,7 @@
             data: {
                 Text: $scope.searchText,
                 ScoringProfile:$scope.profile,
-                ScoringParameter:($scope.profile=="Complete"?'Action':null),
+                ScoringParameter:($scope.profile=="Complete"?$scope.tag:null),
                 Page:$scope.page
             }
         }).then(function success(response) {

@@ -49,6 +49,24 @@
         Completo
         </label>   
         </div>      
+        <fieldset class="form-group" ng-show="profile == 'Complete'">
+
+            <label>Simular interés en:</label>
+            <select class="form-control" ng-model="tag" size="1">
+                <option value="">Seleccionar</option>
+                <option value="Drama">Drama</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Romance">Romance</option>
+                <option value="Action">Action</option>
+                <option value="Crime">Crime</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Horror">Horror</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Fantasy">Fantasy</option>
+                </select>
+
+        </fieldset>
         </div>
     </div>
     <div class="col-sm-9">
@@ -73,7 +91,8 @@
                         <small class="text-muted">{{item.Document.spanishTitle}}</small>
                         <p class="card-text">Año: {{item.Document.year}}</p>
                         <p class="card-text">Puntaje: {{item.Document.rtAllCriticsRating}}</p>
-                        <p class="card-text">Géneros: <a href="#" class="label label-default label-pill" ng-click="filter($event, 'genreTags', genre)" ng-repeat="genre in item.Document.genreTags">{{genre}}</a></p>
+                        <p class="card-text">Géneros: <a href="#" class="label label-default label-pill" ng-repeat="genre in item.Document.genreTags">{{genre}}</a></p>
+                        <p class="card-text">Tags: <a href="#" class="label label-default label-pill"  ng-repeat="genre in item.Document.movieTags">{{genre}}</a></p>
                         <a href="http://www.imdb.com/title/tt{{item.Document.imdbID}}" class="card-link" target="_blank">Ver en Imdb</a>
                         <p class="card-text"><small class="text-muted"><strong>Score</strong> {{item.Score}}</small></p>
                     </div>

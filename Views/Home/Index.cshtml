@@ -36,17 +36,16 @@
                             </li>
                         </ul>
                     <div class="logCaller pull-xs-right" ng-show="currentLog"><button class="btn btn-primary" data-toggle="modal" data-target="#jsonViewer" uib-tooltip="Ver respuesta en formato JSON" tooltip-is-open="showTooltips" tooltip-enable="showTooltips" tooltip-placement="bottom" ><span class="fa fa-eye"></span></button></div>
-                </nav>                
+                </nav>                                
                 <ui-view></ui-view>            
             </div>
-            <div class="steps" ng-show="loaded" ng-cloak>
-                <div class="pull-xs-left bg-primary" ng-show="step>1">
+            
+                <div class="pull-xs-left bg-primary steps" ng-show="step>1 && loaded" ng-show="loaded" ng-cloak>
                     <a href="#" ng-click="prev($event)"><span class="fa fa-chevron-circle-left fa-2x"></span></a>
                 </div>
-                <div class="pull-xs-right bg-primary">
+                <div class="pull-xs-right bg-primary steps" ng-show="loaded" ng-cloak>
                     <a href="#" @*ng-show="masterStep>step"*@ ng-click="next($event)"><span class="fa fa-chevron-circle-right fa-2x"></span></a>
                 </div>
-            </div>
             
             
             

@@ -38,29 +38,31 @@ body>.container-fluid{
 .steps{
     position:fixed;
     width:100%;
-    left:0px;
+    
     top:50%;
     z-index:20;
     margin-top:-40px;
-}
-
-.steps>div{
+    
     width:60px;
     height:80px; 
     padding-top:24px;
     padding-left:11px;
 }
-.steps>div.pull-xs-right{
+
+.steps.pull-xs-right{
     border-radius: 60px 0 0 60px;
      -moz-border-radius: 60px 0 0 60px;
      -webkit-border-radius: 60px 0 0 60px;   
      padding-left:20px;
+     right:0;
 }
-.steps>div.pull-xs-left{
+.steps.pull-xs-left{
+    left:0px;
     border-radius: 0 60px 60px 0;
      -moz-border-radius: 0 60px 60px 0;
      -webkit-border-radius: 0 60px 60px 0;   
 }
+
 .steps a,.steps a:visited{
     color:white;
 }
