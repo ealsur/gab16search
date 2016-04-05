@@ -3,7 +3,7 @@
 (function () {
     angular.module('searchPlayground')
     .controller('ChromeController',
-    function($scope, pubsubSystem, $timeout,$state){
+    function($scope, pubsubSystem, $timeout,$state,$interval, $http){
         $scope.step=0;
         $scope.masterStep=0;
         $scope.crumbs=[];
@@ -55,5 +55,16 @@
             $scope.loaded=true;
             $scope.next(null);
         },2000);
+        
+        $interval(function(){
+           $http({
+            method: 'GET',
+            url: '/master/GetCurrent'
+        }).then(function success(response) {
+           console.log(response);
+        }, function error() {
+            
+        });
+        },1000);
     });
 })();

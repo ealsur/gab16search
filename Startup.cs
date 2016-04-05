@@ -23,6 +23,7 @@ namespace gab16search
             services.AddTransient<ISearchService>(provider =>
                  new SearchService("ealsur","6605083F07CF62B49FCA9515D8CB8C9A")         
             );
+            services.AddCaching();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -35,6 +36,10 @@ namespace gab16search
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                    name: "mastercontrol",
+                    template: "master/{action}",
+                    defaults: new {controller="Master", action="Index" });
                 routes.MapRoute(
                     name: "search",
                     template: "search/{action}",

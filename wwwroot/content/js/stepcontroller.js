@@ -105,7 +105,7 @@
             pubsubSystem.publish('log', response.data);
             $scope.searching=false;
         }, function error() {
-            ;
+            
         });
        };
     })

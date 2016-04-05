@@ -1,4 +1,6 @@
+using System;
 using Microsoft.AspNet.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace gab16search.Controllers
 {
