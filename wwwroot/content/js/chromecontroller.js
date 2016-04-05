@@ -50,6 +50,7 @@
              $scope.crumbs.pop();
             $state.go(nextState);
         };
+        $state.go(states[1].name);
         $timeout(function(){
             $scope.loaded=true;
             $scope.next();
