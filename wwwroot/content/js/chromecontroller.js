@@ -9,9 +9,18 @@
         $scope.crumbs=[];
         $scope.loaded = false;
         $scope.currentLog=null;
-        
+        $scope.showTooltips=false;
+        var firstLog=true;
         pubsubSystem.subscribe('log',function(json){
             $scope.currentLog=json;
+            
+            if(firstLog){
+                firstLog=false;
+                $scope.showTooltips=true;
+                $timeout(function(){
+                    $scope.showTooltips=false;
+                },3000);
+            }
             $scope.$apply();
         });
         pubsubSystem.subscribe('masterStep',function(step){
@@ -20,18 +29,21 @@
         });
         var states = $state.get();
         $scope.next = function($event){
-            $event.preventDefault();
+            if($event!==null){
+             $event.preventDefault();
+             }
+             firstLog=true;
             $scope.currentLog= null;
             $scope.step = $scope.step + 1;
             var nextState=states[$scope.step].name;
-            if(nextState!==''){
-             $scope.crumbs.push(nextState);   
-            }
-             
+            $scope.crumbs.push(nextState);
             $state.go(nextState);
         };
          $scope.prev = function($event){
+             if($event!==null){
              $event.preventDefault();
+             }
+             firstLog=true;
             $scope.currentLog= null;
             $scope.step = $scope.step - 1;
             var nextState=states[$scope.step].name;

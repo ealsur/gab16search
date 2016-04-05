@@ -14,7 +14,7 @@
         .config(function($stateProvider, $urlRouterProvider){
             /*STATE PROVIDER*/
             $stateProvider
-                .state('', {
+                .state('nocrumb-SearchBox', {
                     url: '',
                     templateUrl: '/SearchBox',
                     controller: 'StepController'
