@@ -1,3 +1,10 @@
-<div class="container">
-
+<div class="container-fluid vertical-center">
+    <div class="input-group input-group-lg">
+        
+        <span class="input-group-addon"><span class="fa fa-search"></span></span>
+        <input type="text" class="form-control form-control-lg" placeholder="El cuadro de búsqueda..." ng-model="searchText" ng-disabled="searching">
+        <div class="input-group-btn">
+            <button class="btn btn-primary" type="submit" ng-click="search($event)" ng-disabled="searching">Buscar</button>
+        </div>
+    </div>       
 </div>

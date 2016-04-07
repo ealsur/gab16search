@@ -35,6 +35,17 @@ body>.container-fluid{
     padding:0;
     margin-left:1em !important;
 }
+ .vertical-center{
+     top:50%;
+     position:fixed;
+     text-align:center;
+     margin-top:-40px;
+ }
+ .vertical-center>div{
+     width:40%;
+     left:50%;
+     margin-left:-20%;
+ }
 .steps{
     position:fixed;
     width:100%;
