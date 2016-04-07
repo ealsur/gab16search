@@ -8,6 +8,16 @@ body{
 body>.container-fluid{   
     height:100%;
 }
+.push-down{
+    margin-top:5em;
+}
+.pcircle{
+    margin:0 auto;
+    width:150px;
+    height:150px;
+    padding-top:3.5em;
+    text-align: center;
+}
 .splash{
     color:#0089D1;    
     position: relative;
@@ -24,6 +34,9 @@ body>.container-fluid{
 .hero h1 strong{
     color:#0089D1;
     font-size:1.5em;
+}
+nav{
+    margin-bottom:2em;
 }
 .navbar img{
     width:50px;
