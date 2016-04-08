@@ -166,5 +166,63 @@
             
         });
        };
+    })
+    .controller('SearchTwitterController',
+    function($scope, pubsubSystem, $http){
+       $scope.searchText = '';
+       $scope.searching=false;
+       $scope.filters=null;
+       $scope.page = 1;
+       $scope.getDescriptionByKey = function(key){
+            switch(key){
+                case "account": return "Cuenta";
+                case "hashtags": return "Hashtags";
+            }
+            return key;  
+         };
+         $scope.filter = function($event, filter, value){
+             $event.preventDefault();
+             if($scope.filters !== null && $scope.filters.hasOwnProperty(filter)){
+                 delete $scope.filters[filter];
+             }
+             else{
+                 if($scope.filters===null){
+                     $scope.filters={};
+                 }
+                 $scope.filters[filter] = value;
+             }
+             $scope.search($event);
+         };
+       $scope.next = function($event){
+           $scope.page++;
+           $scope.search($event);
+       };
+       $scope.prev = function($event){
+           $scope.page--;
+           $scope.search($event);
+       };
+       $scope.search = function($event){
+         $event.preventDefault();  
+         $scope.searching=true;
+         $scope.results=null;
+        
+         $http({
+            method: 'POST',
+            url: '/search',
+            data: {
+                Index:"tweets",
+                Text: $scope.searchText,
+                Filters:$scope.filters,
+                IncludeFacets:true,
+                Page:$scope.page
+            }
+        }).then(function success(response) {
+            $scope.results= response.data;
+            pubsubSystem.publish('log', response.data);
+            $scope.searching=false;
+        }, function error() {
+            
+        });
+       };
     });
 })();

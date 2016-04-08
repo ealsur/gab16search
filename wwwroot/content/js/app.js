@@ -68,6 +68,11 @@
                     url: '/end',
                     templateUrl: '/end',
                     controller: 'StepController'
+                })
+                 .state('Twitter!', {
+                    url: '/twitter',
+                    templateUrl: '/twitter',
+                    controller: 'SearchTwitterController'
                 });
         })
         /****** SERVICES *******/

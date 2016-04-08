@@ -61,7 +61,8 @@
             method: 'GET',
             url: '/master/GetCurrent'
         }).then(function success(response) {
-           console.log(response);
+           //console.log(response);
+           //response.data.current
         }, function error() {
             
         });
