@@ -1,9 +1,6 @@
 using System;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Azure; // Namespace for CloudConfigurationManager 
-using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
-using Microsoft.WindowsAzure.Storage.Queue; // Namespace for Queue storage types
 
 namespace gab16search.Controllers
 {
