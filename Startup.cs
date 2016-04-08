@@ -23,6 +23,9 @@ namespace gab16search
             services.AddTransient<ISearchService>(provider =>
                  new SearchService("ealsur","6605083F07CF62B49FCA9515D8CB8C9A")         
             );
+            services.AddTransient<IStorageService>(provider =>
+                 new StorageService("DefaultEndpointsProtocol=https;AccountName=ealsur;AccountKey=jv5v6IwEHKoF34OwZO7fHCgu+Rzj6fNr+KbxScIMp6Qt9+MaDADVCJUFICEmuHZTQosox4P/dNgHnbs3nSuoqw==;")         
+            );
             services.AddCaching();
         }
 

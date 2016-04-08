@@ -3,7 +3,7 @@
 (function () {
     angular.module('searchPlayground')
     .controller('ChromeController',
-    function($scope, pubsubSystem, $timeout,$state,$interval, $http){
+    function($scope, pubsubSystem, $timeout,$state,$interval, $http, $uibModal){
         $scope.step=0;
         $scope.masterStep=0;
         $scope.crumbs=[];
@@ -51,11 +51,20 @@
             $state.go(nextState);
         };
         $state.go(states[1].name);
-        $timeout(function(){
+        
+        var start = function(){
+          $timeout(function(){
             $scope.loaded=true;
             $scope.next(null);
-        },2000);
+        },2000);  
+            
+        };
         
+        var modalInstance = $uibModal.open({
+            templateUrl: 'modalTwitter.html',
+            controller: 'ModalTwitterController'
+            }); 
+        modalInstance.result.then(start,start);
         $interval(function(){
            $http({
             method: 'GET',
@@ -66,6 +75,32 @@
         }, function error() {
             
         });
-        },1000);
-    });
+        },100000);
+    })
+    .controller('ModalTwitterController',
+    function ($scope, $uibModalInstance, $http) {
+        $scope.loading=false;
+        $scope.account='';
+        $scope.ok = function () {
+            $scope.loading=true;
+            
+            $http({
+                method: 'POST',
+                url: '/master/twitter',
+                params:{account:$scope.account}
+            }).then(function success(response) {
+                $scope.loading=false;
+                $uibModalInstance.close();
+            }, function error() {
+                $uibModalInstance.close();    
+            });
+            
+        };
+
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        };
+
+    })
+    ;
 })();
