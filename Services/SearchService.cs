@@ -38,6 +38,9 @@ public class SearchService:ISearchService
         sp.OrderBy = payload.OrderBy.Split(',');
         sp.QueryType = "full".Equals(payload.QueryType)?QueryType.Full:QueryType.Simple;
         sp.SearchMode = payload.SearchMode;
+        if(!payload.Index.Equals("movies")){
+            sp.HighlightFields = new List<string>(){"text"};
+        }
         if(!string.IsNullOrEmpty(payload.ScoringProfile)){
             sp.ScoringProfile = payload.ScoringProfile;    
         } 

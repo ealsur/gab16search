@@ -164,7 +164,9 @@ nav{
       height:400px;
       overflow: scroll;
   }
-  
+  .card-block em{
+      font-weight: bolder;
+  }
   @media (min-width:768px){
       .presentation h1{
             font-size:3em;
