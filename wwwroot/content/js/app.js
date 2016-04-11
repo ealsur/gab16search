@@ -14,8 +14,13 @@
         .config(function($stateProvider, $urlRouterProvider){
             /*STATE PROVIDER*/
             $stateProvider
-                .state('nocrumb-SearchBox', {
+                .state('nocrumb-Splash', {
                     url: '',
+                    templateUrl: '/Splash',
+                    controller: 'StepController'
+                })
+                .state('nocrumb-SearchBox', {
+                    url: '/searchbox',
                     templateUrl: '/SearchBox',
                     controller: 'StepController'
                 })
