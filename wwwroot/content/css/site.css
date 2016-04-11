@@ -28,6 +28,30 @@ body>.container-fluid{
 .splash img{
     max-width:300px;
 }
+.presentation h1{
+    font-size:1em;
+    color:white;
+}
+.presentation h1 strong{
+    font-size:2em;
+}
+.presentation h2{
+       color:black;
+}
+.presentation{
+    height:calc(100% - 100px);
+    background-color:#0089D1;
+    padding-top:12%;
+    position:relative;
+}
+.presentation .band{
+    background-color:white;
+    height:20%;
+    padding:3em;
+    width:100%;  
+    position:absolute;
+    bottom:0;
+}
 .hero h1{
     color:#0089D1;
 }
@@ -141,3 +165,20 @@ nav{
       overflow: scroll;
   }
   
+  @media (min-width:768px){
+      .presentation h1{
+            font-size:3em;
+        }
+         .presentation h1 strong{
+            font-size:2em;
+        }
+  }
+  
+  @media (min-width:1200px){
+      .presentation h1{
+            font-size:3.5em;
+        }
+        .presentation h1 strong{
+            font-size:2em;
+        }
+  }
