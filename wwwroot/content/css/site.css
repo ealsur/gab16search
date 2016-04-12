@@ -9,7 +9,7 @@ body>.container-fluid{
     height:100%;
 }
 .push-down{
-    margin-top:5em;
+    margin-top:2em;
 }
 .pcircle{
     margin:0 auto;
@@ -41,13 +41,13 @@ body>.container-fluid{
 .presentation{
     height:calc(100% - 100px);
     background-color:#0089D1;
-    padding-top:12%;
+    padding-top:5%;
     position:relative;
 }
 .presentation .band{
     background-color:white;
-    height:20%;
-    padding:3em;
+    height:15%;
+    padding:1em;
     width:100%;  
     position:absolute;
     bottom:0;
@@ -77,6 +77,7 @@ nav{
      position:fixed;
      text-align:center;
      margin-top:-40px;
+     width: 100%;
  }
  .vertical-center>div{
      width:40%;
