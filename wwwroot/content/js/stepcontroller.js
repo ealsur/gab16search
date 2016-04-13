@@ -3,11 +3,11 @@
 (function () {
     angular.module('searchPlayground')
     .controller('StepController',
-    function($scope, pubsubSystem){
+    function($scope, $rootScope){
        
     })
     .controller('SearchController',
-    function($scope, pubsubSystem, $http){
+    function($scope, $rootScope, $http){
        $scope.searchText = '';
        $scope.searching=false;
        $scope.filters=null;
@@ -61,7 +61,7 @@
             }
         }).then(function success(response) {
             $scope.results= response.data;
-            pubsubSystem.publish('log', response.data);
+            $rootScope.$broadcast('log', response.data);
             $scope.searching=false;
         }, function error() {
             
@@ -69,7 +69,7 @@
        };
     })
     .controller('ScoringController',
-    function($scope, pubsubSystem, $http){
+    function($scope, $rootScope, $http){
        $scope.searchText = '';
        $scope.searching=false;
        $scope.page = 1;
@@ -102,7 +102,7 @@
             }
         }).then(function success(response) {
             $scope.results= response.data;
-            pubsubSystem.publish('log', response.data);
+            $rootScope.$broadcast('log', response.data);
             $scope.searching=false;
         }, function error() {
             
@@ -110,7 +110,7 @@
        };
     })
     .controller('SuggestionController',
-    function($scope, pubsubSystem, $http){
+    function($scope, $rootScope, $http){
        $scope.noResults=false;
        $scope.loading=false;
        $scope.fuzzy = 'true';
@@ -120,7 +120,7 @@
             method: 'GET',
             url: '/search/suggest?term='+text+'&fuzzy='+$scope.fuzzy
         }).then(function (response) {
-            pubsubSystem.publish('log', response.data);
+            $rootScope.$broadcast('log', response.data);
             var map= response.data.Results.map(function(item){
                 return item.Text;
             });
@@ -129,7 +129,7 @@
       };
     })
     .controller('AdvancedController',
-    function($scope, pubsubSystem, $http){
+    function($scope, $rootScope, $http){
        $scope.searchText = '';
        $scope.searching=false;
        $scope.page = 1;
@@ -160,7 +160,7 @@
             }
         }).then(function success(response) {
             $scope.results= response.data;
-            pubsubSystem.publish('log', response.data);
+            $rootScope.$broadcast('log', response.data);
             $scope.searching=false;
         }, function error() {
             
@@ -168,7 +168,7 @@
        };
     })
     .controller('SearchTwitterController',
-    function($scope, pubsubSystem, $http){
+    function($scope, $rootScope, $http){
        $scope.searchText = '';
        $scope.searching=false;
        $scope.filters=null;
@@ -218,7 +218,7 @@
             }
         }).then(function success(response) {
             $scope.results= response.data;
-            pubsubSystem.publish('log', response.data);
+            $rootScope.$broadcast('log', response.data);
             $scope.searching=false;
         }, function error() {
             

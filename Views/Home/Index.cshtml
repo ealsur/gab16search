@@ -43,8 +43,8 @@
                 <div class="pull-xs-left bg-primary steps" ng-show="step>1 && loaded" ng-show="loaded" ng-cloak>
                     <a href="#" ng-click="prev($event)"><span class="fa fa-chevron-circle-left fa-2x"></span></a>
                 </div>
-                <div class="pull-xs-right bg-primary steps" ng-show="loaded" ng-cloak>
-                    <a href="#" @*ng-show="masterStep>step"*@ ng-click="next($event)"><span class="fa fa-chevron-circle-right fa-2x"></span></a>
+                <div class="pull-xs-right bg-primary steps" ng-cloak ng-show="loaded && masterStep>step && step<stepCount">
+                    <a href="#" ng-click="next($event)"><span class="fa fa-chevron-circle-right fa-2x"></span></a>
                 </div>
             
             

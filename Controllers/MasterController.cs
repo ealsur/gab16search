@@ -31,6 +31,14 @@ namespace gab16search.Controllers
             this.cache.Set("session", id, this.cacheOptions);
             return Ok();
         }
+        [HttpPost]
+        public IActionResult Destroy()
+        {
+            if(this.cache.Get("session")!=null){
+            this.cache.Remove("session");
+            }
+            return Ok();
+        }
         
         [HttpPost]
         public IActionResult Twitter(string account)

@@ -13,7 +13,7 @@
 		}])
         .controller('MasterController',
     function($scope, $http){
-       $scope.step = 1;
+       $scope.step = -1;
       
        $scope.next = function($event){
          $event && $event.preventDefault();  
@@ -23,10 +23,18 @@
             url: '/master/SetCurrent',
             data:(++$scope.step)
         }).then(function success(response) {
-           
+           if($scope.step==13){
+               /*End*/
+                $http({
+                    method: 'POST',
+                    url: '/master/Destroy'
+                });
+           }
         }, function error() {
             
         });
+        
        };
+       $scope.next(null);
     });
 })();

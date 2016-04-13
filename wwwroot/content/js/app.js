@@ -79,43 +79,5 @@
                     templateUrl: '/twitter',
                     controller: 'SearchTwitterController'
                 });
-        })
-        /****** SERVICES *******/
-        .factory('pubsubSystem', function () {
-            var service = {};
-            var eventTypes = {}, subscriberID = -1;
-            var firedEvents = {};
-            service.subscribe = function (eventType, func) {
-                if (firedEvents[eventType]) {
-                    func(firedEvents[eventType]);
-                    return false;
-                }
-                if (!eventTypes[eventType]) {
-                    eventTypes[eventType] = [];
-                }
-                var subscriber = (++subscriberID).toString();
-                eventTypes[eventType].push({
-                    subscriber: subscriber,
-                    func: func
-                });
-                return subscriber;
-            };
-            service.publish = function (eventType, args) {
-                firedEvents[eventType] = args;
-                if (!eventTypes[eventType]) {
-                    return false;
-                }
-
-                setTimeout(function () {
-                    var subscribers = eventTypes[eventType],
-                        len = subscribers ? subscribers.length : 0;
-
-                    while (len--) {
-                        subscribers[len].func(args);
-                    }
-                }, 0);
-                return true;
-            };
-            return service;
         });
 })();

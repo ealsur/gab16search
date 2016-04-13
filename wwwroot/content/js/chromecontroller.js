@@ -3,15 +3,15 @@
 (function () {
     angular.module('searchPlayground')
     .controller('ChromeController',
-    function($scope, pubsubSystem, $timeout,$state,$interval, $http, $uibModal){
-        $scope.step=0;
-        $scope.masterStep=0;
+    function($scope, $rootScope, $timeout,$state,$interval, $http, $uibModal){
+        
         $scope.crumbs=[];
         $scope.loaded = false;
         $scope.currentLog=null;
         $scope.showTooltips=false;
+        var masterMode=false;
         var firstLog=true;
-        pubsubSystem.subscribe('log',function(json){
+        $rootScope.$on('log',function(evt,json){
             $scope.currentLog=json;
             
             if(firstLog){
@@ -23,11 +23,12 @@
             }
             $scope.$apply();
         });
-        pubsubSystem.subscribe('masterStep',function(step){
+        $rootScope.$on('masterStep',function(evt,step){
             $scope.masterStep=step;
-            $scope.$apply();
         });
         var states = $state.get();
+        $scope.stepCount = states.length;
+        $scope.masterStep =$scope.stepCount; 
         $scope.next = function($event){
             if($event!==null){
              $event.preventDefault();
@@ -50,12 +51,30 @@
              $scope.crumbs.pop();
             $state.go(nextState);
         };
-        $state.go(states[1].name);
+        $scope.goToStep = function(toStep){
+            var nextState = null;
+            while($scope.step<toStep){
+                $scope.step = $scope.step + 1;
+                nextState=states[$scope.step].name;
+                $scope.crumbs.push(nextState);
+            }
+            if(nextState!==null){
+             $state.go(nextState);
+            }
+        };
+        $scope.step=0;
+        $state.go('nocrumb-Splash');
         
         var start = function(){
           $timeout(function(){
             $scope.loaded=true;
-            $scope.next(null);
+            
+            if(!masterMode){
+                $scope.next(null);
+            }
+            else{
+                $scope.goToStep($scope.masterStep);
+            }
         },2000);  
             
         };
@@ -65,17 +84,24 @@
             controller: 'ModalTwitterController'
             }); 
         modalInstance.result.then(start,start);
-        $interval(function(){
+        var interval = $interval(function(){
            $http({
             method: 'GET',
             url: '/master/GetCurrent'
         }).then(function success(response) {
-           //console.log(response);
-           //response.data.current
-        }, function error() {
-            
+           if(response.data.current !== null){
+               masterMode=true;
+               if($scope.step==$scope.masterStep){
+                   $scope.next(null);
+               }
+               $scope.masterStep = response.data.current;
+           }
+           else{
+               $interval.cancel(interval);
+               /*No master running*/
+           }
         });
-        },100000);
+        },2000);
     })
     .controller('ModalTwitterController',
     function ($scope, $uibModalInstance, $http) {
