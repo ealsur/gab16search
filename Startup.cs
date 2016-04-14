@@ -12,6 +12,7 @@ namespace gab16search
         {
             var builder = new ConfigurationBuilder()
                 .AddEnvironmentVariables();
+            
             Configuration = builder.Build();
         }
 
@@ -24,7 +25,7 @@ namespace gab16search
                  new SearchService("ealsur","6605083F07CF62B49FCA9515D8CB8C9A")         
             );
             services.AddTransient<IStorageService>(provider =>
-                 new StorageService("")          
+                 new StorageService(Configuration.Get("Data:storage:ConnectionString"))          
             );
             services.AddCaching();
         }

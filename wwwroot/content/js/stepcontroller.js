@@ -10,6 +10,7 @@
        $scope.searchText = '';
        $scope.searching=false;
        $scope.filters=null;
+       
        $scope.page = 1;
        $scope.getDescriptionByKey = function(key){
             switch(key){
