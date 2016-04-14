@@ -65,9 +65,9 @@
         };
         $scope.step=0;
         $state.go('nocrumb-Splash');
-        
+        preloadImages.preload(['images/indexers.png','images/index.gif','images/pricing.png']);
         var start = function(){
-            preloadImages.preload(['images/indexers.png','images/index.gif','images/pricing.png']);
+            
           $timeout(function(){
             $scope.loaded=true;
             if(!masterMode){
