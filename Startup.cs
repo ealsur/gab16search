@@ -8,14 +8,12 @@ namespace gab16search
 {
     public class Startup
     {
-        private readonly string storageConnectionString;
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
                 .AddEnvironmentVariables();
             
             Configuration = builder.Build();
-            storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=ealsur;AccountKey=jv5v6IwEHKoF34OwZO7fHCgu+Rzj6fNr+KbxScIMp6Qt9+MaDADVCJUFICEmuHZTQosox4P/dNgHnbs3nSuoqw==;";
         }
 
         public IConfigurationRoot Configuration { get; set; }
@@ -27,7 +25,7 @@ namespace gab16search
                  new SearchService("ealsur","6605083F07CF62B49FCA9515D8CB8C9A")         
             );
             services.AddTransient<IStorageService>(provider =>
-                 new StorageService(storageConnectionString)          
+                 new StorageService(Configuration["storage"])          
             );
             services.AddCaching();
         }
