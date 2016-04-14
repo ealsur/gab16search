@@ -69,6 +69,11 @@
                     templateUrl: '/try',
                     controller: 'StepController'
                 })
+                .state('Pricing', {
+                    url: '/pricing',
+                    templateUrl: '/pricing',
+                    controller: 'StepController'
+                })
                  .state('Gracias!', {
                     url: '/end',
                     templateUrl: '/end',

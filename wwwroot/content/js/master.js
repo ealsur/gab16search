@@ -23,7 +23,7 @@
             url: '/master/SetCurrent',
             data:(++$scope.step)
         }).then(function success(response) {
-           if($scope.step==14){
+           if($scope.step==15){
                /*End*/
                 $http({
                     method: 'POST',
