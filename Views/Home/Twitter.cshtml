@@ -53,8 +53,8 @@
                          <a ng-href="https://twitter.com/{{item.Document.account}}" target="_blank" class="card-link">@@{{item.Document.account}}</a> - {{item.Document.createdAt | date : 'dd/MM/yyyy'}}
                     </div>
                     <div class="card-block">
-                        <p class="card-text" ng-bind-html="item.Highlights.text[0]"></p>
-                        
+                        <p class="card-text" ng-bind-html="item.Highlights.text[0]" ng-if="item.Highlights"></p>
+                        <p class="card-text" ng-if="!item.Highlights">{{item.Document.text}}</p>
                     </div>
                     <img class="card-img-bottom" ng-src="{{item.Document.media[0]}}" alt="{{item.Document.text}" ng-if="item.Document.media.length>0">
                     <div class="card-footer text-muted">
