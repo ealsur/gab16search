@@ -25,7 +25,7 @@ namespace gab16search
                  new SearchService("ealsur","6605083F07CF62B49FCA9515D8CB8C9A")         
             );
             services.AddTransient<IStorageService>(provider =>
-                 new StorageService(Configuration.Get("Data:storage:ConnectionString"))          
+                 new StorageService(Configuration.Get("CUSTOMCONNSTR_storage"))          
             );
             services.AddCaching();
         }
