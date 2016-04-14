@@ -79,5 +79,15 @@
                     templateUrl: '/twitter',
                     controller: 'SearchTwitterController'
                 });
+        })
+        .factory('preloadImages', function(){
+            return {
+                preload:function(imgArray){
+                    angular.forEach(imgArray, function (img) {
+                        var imgO = new Image();
+                        imgO.src = img;
+                    });
+                }
+            }
         });
 })();

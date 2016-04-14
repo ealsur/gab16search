@@ -3,7 +3,7 @@
 (function () {
     angular.module('searchPlayground')
     .controller('ChromeController',
-    function($scope, $rootScope, $timeout,$state,$interval, $http, $uibModal){
+    function($scope, $rootScope, $timeout,$state,$interval, $http, $uibModal, preloadImages){
         
         $scope.crumbs=[];
         $scope.loaded = false;
@@ -67,6 +67,7 @@
         $state.go('nocrumb-Splash');
         
         var start = function(){
+            preloadImages.preload(['images/indexers.png','images/index.gif','images/pricing.png']);
           $timeout(function(){
             $scope.loaded=true;
             if(!masterMode){
