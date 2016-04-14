@@ -8,32 +8,32 @@ namespace gab16search
 {
     public class Startup
     {
+        private readonly string storageConnectionString;
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
                 .AddEnvironmentVariables();
             
             Configuration = builder.Build();
+            storageConnectionString = Configuration.Get("APPSETTING_storage");
         }
 
         public IConfigurationRoot Configuration { get; set; }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var storageConnString = Configuration.Get("APPSETTING_storage");
             services.AddMvc();
             services.AddTransient<ISearchService>(provider =>
                  new SearchService("ealsur","6605083F07CF62B49FCA9515D8CB8C9A")         
             );
             services.AddTransient<IStorageService>(provider =>
-                 new StorageService(storageConnString)          
+                 new StorageService(storageConnectionString)          
             );
             services.AddCaching();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            
             app.UseDeveloperExceptionPage();
             
             app.UseIISPlatformHandler();
