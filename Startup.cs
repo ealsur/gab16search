@@ -20,18 +20,20 @@ namespace gab16search
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var storageConnString = Configuration.Get("CUSTOMCONNSTR_storage");
             services.AddMvc();
             services.AddTransient<ISearchService>(provider =>
                  new SearchService("ealsur","6605083F07CF62B49FCA9515D8CB8C9A")         
             );
             services.AddTransient<IStorageService>(provider =>
-                 new StorageService(Configuration.Get("storage"))          
+                 new StorageService(storageConnString)          
             );
             services.AddCaching();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            
             app.UseDeveloperExceptionPage();
             
             app.UseIISPlatformHandler();
