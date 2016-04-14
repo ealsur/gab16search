@@ -4,7 +4,6 @@
     angular.module('searchPlayground')
     .controller('StepController',
     function($scope, $rootScope){
-       
     })
     .controller('SearchController',
     function($scope, $rootScope, $http){

@@ -29,7 +29,8 @@
         var states = $state.get();
         $scope.stepCount = states.length;
         $scope.masterStep =$scope.stepCount; 
-        $scope.next = function($event){
+        
+        $scope.next =function($event){
             if($event!==null){
              $event.preventDefault();
              }
@@ -68,7 +69,6 @@
         var start = function(){
           $timeout(function(){
             $scope.loaded=true;
-            
             if(!masterMode){
                 $scope.next(null);
             }
@@ -91,9 +91,9 @@
         }).then(function success(response) {
            if(response.data.current !== null){
                masterMode=true;
-               if($scope.step==$scope.masterStep){
+               if($scope.step==$scope.masterStep-1){
                    $scope.next(null);
-               }
+               }               
                $scope.masterStep = response.data.current;
            }
            else{
