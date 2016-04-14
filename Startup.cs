@@ -15,7 +15,7 @@ namespace gab16search
                 .AddEnvironmentVariables();
             
             Configuration = builder.Build();
-            storageConnectionString = Configuration.Get("APPSETTING_storage");
+            storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=ealsur;AccountKey=jv5v6IwEHKoF34OwZO7fHCgu+Rzj6fNr+KbxScIMp6Qt9+MaDADVCJUFICEmuHZTQosox4P/dNgHnbs3nSuoqw==;";
         }
 
         public IConfigurationRoot Configuration { get; set; }
