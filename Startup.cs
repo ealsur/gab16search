@@ -20,7 +20,7 @@ namespace gab16search
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var storageConnString = Configuration.Get("CUSTOMCONNSTR_storage");
+            var storageConnString = Configuration.Get("storage");
             services.AddMvc();
             services.AddTransient<ISearchService>(provider =>
                  new SearchService("ealsur","6605083F07CF62B49FCA9515D8CB8C9A")         
