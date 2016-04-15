@@ -70,11 +70,11 @@ public class SearchService:ISearchService
     
     private string GetFilterExpression(string key, string value){
         switch (key) {
-            case "year":
             case "account":
+                return string.Format("{0} eq '{1}'", key, value);
+            case "year":            
             case "rtAllCriticsRating":
-                 return string.Format("{0} eq {1}", key, value);
-             
+                 return string.Format("{0} eq {1}", key, value);             
             case "actorTags":
             case "genreTags":
             case "hashtags":
