@@ -21,7 +21,6 @@
                     $scope.showTooltips=false;
                 },3000);
             }
-            $scope.$apply();
         });
         $rootScope.$on('masterStep',function(evt,step){
             $scope.masterStep=step;
