@@ -10,7 +10,7 @@
        $scope.searchText = '';
        $scope.searching=false;
        $scope.filters=null;
-       
+       var lastSearch='';
        $scope.page = 1;
        $scope.getDescriptionByKey = function(key){
             switch(key){
@@ -52,7 +52,9 @@
          $event.preventDefault();  
          $scope.searching=true;
          $scope.results=null;
-        
+        if(lastSearch!==$scope.searchText){
+            $scope.page = 1;
+        }
          $http({
             method: 'POST',
             url: '/search',
@@ -81,6 +83,7 @@
        $scope.page = 1;
     $scope.profile='';
     $scope.tag='';
+    var lastSearch='';
            $scope.curateUrl = function(url){
                
              if(url[0] === '"'){
@@ -100,7 +103,9 @@
          $event && $event.preventDefault();  
          $scope.searching=true;
          $scope.results=null;
-        
+        if(lastSearch!==$scope.searchText){
+            $scope.page = 1;
+        }
          $http({
             method: 'POST',
             url: '/search',
@@ -146,7 +151,7 @@
        $scope.searchText = '';
        $scope.searching=false;
        $scope.page = 1;
-   
+   var lastSearch='';
           $scope.curateUrl = function(url){
              if(url[0] === '"'){
            var u= url.substr(1);
@@ -165,7 +170,9 @@
          $event && $event.preventDefault();  
          $scope.searching=true;
          $scope.results=null;
-        
+        if(lastSearch!==$scope.searchText){
+            $scope.page = 1;
+        }
          $http({
             method: 'POST',
             url: '/search',
@@ -192,6 +199,7 @@
        $scope.searching=false;
        $scope.filters=null;
        $scope.page = 1;
+       var lastSearch='';
        $scope.getDescriptionByKey = function(key){
             switch(key){
                 case "account": return "Cuenta";
@@ -224,7 +232,9 @@
          $event.preventDefault();  
          $scope.searching=true;
          $scope.results=null;
-        
+        if(lastSearch!==$scope.searchText){
+            $scope.page = 1;
+        }
          $http({
             method: 'POST',
             url: '/search',

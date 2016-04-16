@@ -45,30 +45,30 @@
             No encontramos resultados
         </div>
         <div  class="col-xs-12" ng-show="!searching && results.Count > 0">
-        <h4 uib-tooltip="Resultados de busqueda" tooltip-is-open="showTooltips" tooltip-placement="bottom" tooltip-enable="showTooltips">Hay <strong>{{results.Count}}</strong> resultados de búsqueda</h4>           
-        <div class="col-xs-12">
-            <div class="col-xs-12" ng-repeat="item in results.Results">
-                <div class="card">
-                    <div class="card-header">
-                         <a ng-href="https://twitter.com/{{item.Document.account}}" target="_blank" class="card-link">@@{{item.Document.account}}</a> - {{item.Document.createdAt | date : 'dd/MM/yyyy'}}
+        <h4 uib-tooltip="Resultados de busqueda" tooltip-is-open="showTooltips" tooltip-placement="bottom" tooltip-enable="showTooltips">Hay <strong>{{results.Count}}</strong> resultados de búsqueda</h4>
+        <div class="col-xs-12" ng-repeat="item in results.Results">
+                <div class="media result-item">
+                    <div class="media-left media-middle" ng-if="item.Document.media.length>0">
+                        <img class="media-object" ng-src="{{item.Document.media[0]}}" alt="{{item.Document.text}" >
                     </div>
-                    <div class="card-block">
-                        <p class="card-text" ng-bind-html="item.Highlights.text[0]" ng-if="item.Highlights"></p>
-                        <p class="card-text" ng-if="!item.Highlights">{{item.Document.text}}</p>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a ng-href="https://twitter.com/{{item.Document.account}}" target="_blank" class="card-link">@@{{item.Document.account}}</a> - {{item.Document.createdAt | date : 'dd/MM/yyyy'}}</h4>
+                        <p ng-bind-html="item.Highlights.text[0]" ng-if="item.Highlights"></p>
+                        <p ng-if="!item.Highlights">{{item.Document.text}}</p>
+                        
+                        <p>
+                            <i class="fa fa-heart"></i> {{item.Document.favoriteCount}} <i class="fa fa-retweet"></i> {{item.Document.retweetCount}}
+                            <a href="#" class="label label-default label-pill" ng-click="filter($event, 'hashtags', hashtag)" ng-repeat="hashtag in item.Document.hashtags">#{{hashtag}}</a>
+                        </p>
                     </div>
-                    <img class="card-img-bottom" ng-src="{{item.Document.media[0]}}" alt="{{item.Document.text}" ng-if="item.Document.media.length>0">
-                    <div class="card-footer text-muted">
-                        <i class="fa fa-heart"></i> {{item.Document.favoriteCount}} <i class="fa fa-retweet"></i> {{item.Document.retweetCount}}
-                        <a href="#" class="label label-default label-pill" ng-click="filter($event, 'hashtags', hashtag)" ng-repeat="hashtag in item.Document.hashtags">#{{hashtag}}</a>
-                    </div>
-
-                    </div>
+                    </div>             
+                
            </div>
-        </div>
+             
         <nav class="clearfix" ng-show="results.Count > 0">
             <ul class="pager">
-                <li class="pager-prev" ng-show="page > 1"><a href="#" ng-click="prev($event)"><span aria-hidden="true">&larr;</span> Older</a></li>
-                <li class="pager-next"><a href="#" ng-click="next($event)">Newer <span aria-hidden="true">&rarr;</span></a></li>
+                <li class="pager-prev" ng-show="page > 1"><a href="#" ng-click="prev($event)"><span aria-hidden="true">&larr;</span> Anteriores</a></li>
+                <li class="pager-next"><a href="#" ng-click="next($event)">Siguientes <span aria-hidden="true">&rarr;</span></a></li>
             </ul>
         </nav>
         </div>
