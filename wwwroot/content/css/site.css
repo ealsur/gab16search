@@ -128,9 +128,13 @@ nav{
 .card-img-top .img-fluid{
     width:100%;
 }
-.result-item.card{
-    box-shadow: 2px 2px;
+.result-item.card, .result-item.media{
+    box-shadow: 1px 1px;
     background-color: #ddd;
+    margin-bottom:3px;
+}
+.result-item.media .media-object{
+    height:150px;
 }
 .typeahead .custom-popup-wrapper {
     position: absolute;
