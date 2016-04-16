@@ -29,7 +29,7 @@
             <div ng-show="loaded" class="container-fluid" ng-cloak style="height:100%;">
                 <nav class="navbar navbar-dark bg-inverse">
                     <a class="navbar-brand" href="#"><img alt="Brand" src="images/Azure Search.png"></a>
-                    <ul class="nav navbar-nav hidden-xs">
+                    <ul class="nav navbar-nav hidden-md-down">
                             <li ng-repeat="crumb in crumbs | filter:'!nocrumb'" class="nav-item">
                                 <span ng-if="!$last" class="text-muted">{{crumb}} &gt;</span>
                                 <span ng-if="$last">{{crumb}}</span>
