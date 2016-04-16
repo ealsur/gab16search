@@ -22,7 +22,7 @@
             return key;  
          };
          $scope.curateUrl = function(url){
-           return url.replace(/"/g,'');  
+           return url.substr(1, url.length-2);  
          };
          $scope.filter = function($event, filter, value){
              $event.preventDefault();
@@ -76,7 +76,7 @@
     $scope.profile='';
     $scope.tag='';
          $scope.curateUrl = function(url){
-           return url.replace(/"/g,'');  
+           return url.substr(1, url.length-2);  
          };
        $scope.next = function($event){
            $scope.page++;
@@ -135,7 +135,7 @@
        $scope.page = 1;
    
          $scope.curateUrl = function(url){
-           return url.replace(/"/g,'');  
+           return url.substr(1, url.length-2);  
          };
        $scope.next = function($event){
            $scope.page++;
