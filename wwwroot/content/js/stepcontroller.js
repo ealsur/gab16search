@@ -22,7 +22,10 @@
             return key;  
          };
          $scope.curateUrl = function(url){
-           return url.substr(1, url.length-2);  
+             if(url[0] === '"'){
+           var u= url.substr(1);
+           return u.substring(0, u.length - 1);
+             }
          };
          $scope.filter = function($event, filter, value){
              $event.preventDefault();
@@ -60,6 +63,9 @@
                 Page:$scope.page
             }
         }).then(function success(response) {
+            angular.forEach(response.data.Results,function(item){
+                item.Document.imdbPictureURL = $scope.curateUrl(item.Document.imdbPictureURL);
+            });
             $scope.results= response.data;
             $rootScope.$broadcast('log', response.data);
             $scope.searching=false;
@@ -75,8 +81,12 @@
        $scope.page = 1;
     $scope.profile='';
     $scope.tag='';
-         $scope.curateUrl = function(url){
-           return url.substr(1, url.length-2);  
+           $scope.curateUrl = function(url){
+               
+             if(url[0] === '"'){
+           var u= url.substr(1);
+           return u.substring(0, u.length - 1);
+             }
          };
        $scope.next = function($event){
            $scope.page++;
@@ -101,6 +111,9 @@
                 Page:$scope.page
             }
         }).then(function success(response) {
+            angular.forEach(response.data.Results,function(item){
+                item.Document.imdbPictureURL = $scope.curateUrl(item.Document.imdbPictureURL);
+            });
             $scope.results= response.data;
             $rootScope.$broadcast('log', response.data);
             $scope.searching=false;
@@ -134,8 +147,11 @@
        $scope.searching=false;
        $scope.page = 1;
    
-         $scope.curateUrl = function(url){
-           return url.substr(1, url.length-2);  
+          $scope.curateUrl = function(url){
+             if(url[0] === '"'){
+           var u= url.substr(1);
+           return u.substring(0, u.length - 1);
+             }
          };
        $scope.next = function($event){
            $scope.page++;
@@ -159,6 +175,9 @@
                 Page:$scope.page
             }
         }).then(function success(response) {
+            angular.forEach(response.data.Results,function(item){
+                item.Document.imdbPictureURL = $scope.curateUrl(item.Document.imdbPictureURL);
+            });
             $scope.results= response.data;
             $rootScope.$broadcast('log', response.data);
             $scope.searching=false;

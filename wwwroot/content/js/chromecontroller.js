@@ -100,6 +100,8 @@
                $interval.cancel(interval);
                /*No master running*/
            }
+        }, function(){
+             $interval.cancel(interval);
         });
         },2000);
     })
