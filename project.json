@@ -1,44 +1,64 @@
 {
   "version": "1.0.0-*",
+  "packOptions":{
+		"summary": "Search - Azure Bootcamp 2016",
+		"owners": ["Matías Quaranta"],
+		"projectUrl": "http://github.com/ealsur/search16",
+		"licenseUrl": "",
+		"repository": {
+		  "type": "git",
+		  "url": "https://github.com/ealsur/search16"
+		},
+		"files":{
+			"excludeFiles":[
+				"bower_components",
+				"node_modules"
+			]
+		}
+	},
   "compilationOptions": {
     "emitEntryPoint": true
   },
-  "tooling": {
-    "defaultNamespace": "gab16search"
-  },
-
+  "buildOptions": {
+        "warningsAsErrors": true,
+        "emitEntryPoint": true,
+        "preserveCompilationContext": true,
+        "compile": {
+            "exclude": ["node_modules"]
+        }
+    },  
+    "exclude": ["node_modules"],
+"runtimeOptions": {
+        "gcServer": true
+    },
   "dependencies": {
-    "Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
-    "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
-    "Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-rc1-final",
-    "Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final",
-    "Microsoft.AspNet.StaticFiles": "1.0.0-rc1-final",
-    "Microsoft.AspNet.Tooling.Razor": "1.0.0-rc1-final",
+    "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-rc2-final",
+    "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
+        "Microsoft.AspNetCore.Diagnostics":"1.0.0-rc2-final",
+        "Microsoft.AspNetCore.StaticFiles": "1.0.0-rc2-final",
+        "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-final", 
+        "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0-rc2-final",
     "WindowsAzure.Storage": "6.2.0",
-    "Microsoft.Azure.Search": "1.1.0",
-    "Newtonsoft.Json": "8.0.3",
-    "Microsoft.AspNet.Diagnostics.Entity": "7.0.0-rc1-final"
+    "Microsoft.Azure.Search": "1.1.1",
+    "Newtonsoft.Json": "8.0.3"
   },
-
-  "commands": {
-    "web": "Microsoft.AspNet.Server.Kestrel"
-  },
-
-  "frameworks": {
-    "dnx451": {}
-  },
-
-  "exclude": [
-    "wwwroot",
-    "node_modules",
-    "bower_components",
-    "dataset"
-  ],
-  "publishExclude": [
-    "node_modules",
-    "bower_components",
-    "**.xproj",
-    "**.user",
-    "**.vspscc"
-  ]
+  "tools": {
+	  "Microsoft.AspNetCore.Server.IISIntegration.Tools": {
+		"version": "1.0.0-*",
+		"imports": "portable-net45+wp80+win8+wpa81+dnxcore50"
+	  }
+	},
+  "scripts": {
+	  "postpublish": "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%"
+	},
+ "frameworks": {
+        "net461":{}
+    },
+  "publishOptions": {
+    "include": [
+        "wwwroot",
+        "Views",
+        "web.config"
+        ]
+    },
 }

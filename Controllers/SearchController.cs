@@ -1,5 +1,5 @@
 using gab16search.ViewModels;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 namespace gab16search.Controllers
 {

@@ -1,5 +1,6 @@
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
+using System.IO;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -22,20 +23,18 @@ namespace gab16search
         {
             services.AddMvc();
             services.AddTransient<ISearchService>(provider =>
-                 new SearchService("ealsur","6605083F07CF62B49FCA9515D8CB8C9A")         
+                 new SearchService("ealsur","AAB47BB2318A98BCDAD548671A5C4780")         
             );
             services.AddTransient<IStorageService>(provider =>
                  new StorageService(Configuration["storage"])          
             );
-            services.AddCaching();
+            services.AddMemoryCache();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseDeveloperExceptionPage();
             
-            app.UseIISPlatformHandler();
-
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
@@ -60,6 +59,16 @@ namespace gab16search
             });
         }
 
-        public static void Main(string[] args) => Microsoft.AspNet.Hosting.WebApplication.Run<Startup>(args);
+         public static void Main(string[] args)
+        {
+            var host = new WebHostBuilder()
+                .UseKestrel()
+				.UseIISIntegration()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseStartup<Startup>()
+                .Build();
+
+            host.Run();
+        }
     }
 }
