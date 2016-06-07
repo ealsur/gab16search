@@ -16,9 +16,6 @@
 			]
 		}
 	},
-  "compilationOptions": {
-    "emitEntryPoint": true
-  },
   "buildOptions": {
         "warningsAsErrors": true,
         "emitEntryPoint": true,
