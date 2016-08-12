@@ -1,13 +1,16 @@
 {
-	"version": "0.1.0",
-	"command": "gulp",
-	"isShellCommand": true,
-	"tasks": [
-		{
-			"taskName": "watch",
-			"isWatching": true,            
-			"showOutput": "always",
-            "isBuildCommand": true
-		}
-	]
+    "version": "0.1.0",
+    "command": "dotnet",
+    "isShellCommand": true,
+    "args": [],
+    "tasks": [
+        {
+            "taskName": "build",
+            "args": [
+                "${workspaceRoot}\\project.json"
+            ],
+            "isBuildCommand": true,
+            "problemMatcher": "$msCompile"
+        }
+    ]
 }

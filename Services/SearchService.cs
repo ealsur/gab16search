@@ -23,8 +23,8 @@ public class SearchService:ISearchService
         SuggestParameters sp = new SuggestParameters();
         sp.Top = 5;
         sp.UseFuzzyMatching=fuzzy;
-        var indexClient = client.Indexes.GetClient("movies");
-        return indexClient.Documents.Suggest(term, "suggester", sp);
+        var indexClient = client.Indexes.GetClient("news");
+        return indexClient.Documents.Suggest(term, "tags", sp);
     }
     
     public DocumentSearchResult Search(SearchPayload payload){
@@ -38,17 +38,17 @@ public class SearchService:ISearchService
         sp.OrderBy = payload.OrderBy.Split(',');
         sp.QueryType = "full".Equals(payload.QueryType)?QueryType.Full:QueryType.Simple;
         sp.SearchMode = payload.SearchMode;
-        if(!payload.Index.Equals("movies")){
+        if(!payload.Index.Equals("news")){
             sp.HighlightFields = new List<string>(){"text"};
         }
         if(!string.IsNullOrEmpty(payload.ScoringProfile)){
             sp.ScoringProfile = payload.ScoringProfile;
             if(!string.IsNullOrEmpty(payload.ScoringParameter)){
-                sp.ScoringParameters = payload.ScoringParameter.Split(',').Select(x=> new ScoringParameter("likes", payload.ScoringParameter)).ToList();    
+                sp.ScoringParameters = payload.ScoringParameter.Split(',').Select(x=> new ScoringParameter("pais", payload.ScoringParameter)).ToList();    
             }
             else{
                 if(payload.ScoringParameter=="")
-                sp.ScoringParameters = new List<ScoringParameter>(){ new ScoringParameter("likes", "none")};
+                sp.ScoringParameters = new List<ScoringParameter>(){ new ScoringParameter("pais", "none")};
             }    
         } 
         sp.IncludeTotalResultCount = true;
@@ -58,8 +58,8 @@ public class SearchService:ISearchService
             if(payload.Filters!=null){
                  appliedFilters = payload.Filters.Select(x=>x.Key).ToList();
             }
-            if(payload.Index.Equals("movies")){
-                sp.Facets = (new List<string>(){"year", "rtAllCriticsRating", "actorTags", "genreTags"}).Except(appliedFilters).ToList();
+            if(payload.Index.Equals("news")){
+                sp.Facets = (new List<string>(){"Year", "Category", "TopLevelDomain"}).Except(appliedFilters).ToList();
             }
             else{
                 sp.Facets = (new List<string>(){"account", "hashtags"}).Except(appliedFilters).ToList();
@@ -67,16 +67,15 @@ public class SearchService:ISearchService
         }
         return indexClient.Documents.Search(payload.Text, sp);
     }
-    
+
     private string GetFilterExpression(string key, string value){
         switch (key) {
             case "account":
+            case "TopLevelDomain":
+            case "Category":
                 return string.Format("{0} eq '{1}'", key, value);
-            case "year":            
-            case "rtAllCriticsRating":
+            case "Year":            
                  return string.Format("{0} eq {1}", key, value);             
-            case "actorTags":
-            case "genreTags":
             case "hashtags":
                 return string.Format("{0}/any(t: t eq '{1}') ", key, value);
         }

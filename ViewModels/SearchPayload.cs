@@ -23,6 +23,6 @@ namespace gab16search.ViewModels
         
         public string ScoringParameter { get; set; }
         
-        public string Index { get; set; } = "movies";
+        public string Index { get; set; } = "news";
     }
 }

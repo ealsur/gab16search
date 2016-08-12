@@ -29,36 +29,30 @@
         Default
         </label>
         <label class="c-input c-radio">
-        <input name="profile" type="radio" ng-model="profile" value="Newer" ng-change="search($event)">
+        <input name="profile" type="radio" ng-model="profile" value="Auto" ng-change="search($event)">
         <span class="c-indicator"></span>
-        Más nuevas
+        Relacionados a un auto
         </label>
         <label class="c-input c-radio">
-        <input name="profile" type="radio" ng-model="profile" value="Critics" ng-change="search($event)">
+        <input name="profile" type="radio" ng-model="profile" value="PorViews" ng-change="search($event)">
         <span class="c-indicator"></span>
-        Mejores críticas
-        </label> 
-        <label class="c-input c-radio">
-        <input name="profile" type="radio" ng-model="profile" value="Complete" ng-change="search($event)">
-        <span class="c-indicator"></span>
-        Completo
+        Más vistas
         </label>   
         </div>      
         <fieldset class="form-group" ng-show="profile == 'Complete'">
 
-            <label>Simular interés en:</label>
+            <label>Simular usuario del país:</label>
             <select class="form-control" ng-model="tag" size="1">
                 <option value="">Seleccionar</option>
-                <option value="Drama">Drama</option>
-                <option value="Comedy">Comedy</option>
-                <option value="Thriller">Thriller</option>
-                <option value="Romance">Romance</option>
-                <option value="Action">Action</option>
-                <option value="Crime">Crime</option>
-                <option value="Adventure">Adventure</option>
-                <option value="Horror">Horror</option>
-                <option value="Sci-Fi">Sci-Fi</option>
-                <option value="Fantasy">Fantasy</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Venezuela">Venezuela</option>
+                <option value="Hispanic">USA</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Colombia">Colombia</option>
+                <option value="Chile">Chile</option>
+                <option value="Ecuador">Ecuador</option>
+                <option value="Uruguay">Uruguay</option>
+                <option value="Peru">Perú</option>
                 </select>
 
         </fieldset>
@@ -74,17 +68,18 @@
         </div>
         <div  class="col-xs-12" ng-show="!searching && results.Count > 0">
         <h4>Hay <strong>{{results.Count}}</strong> resultados de búsqueda</h4>           
-            <div class="col-xs-12" ng-repeat="item in results.Results">
+             <div class="col-xs-12" ng-repeat="item in results.Results">
                 <div class="media result-item">
                     <div class="media-left media-middle">
-                        <img class="media-object" ng-src="{{item.Document.imdbPictureURL}}">
+                        <img class="media-object" ng-src="{{item.Document.ImageUrl}}">
                     </div>
                     <div class="media-body">
-                        <h4 class="media-heading">{{item.Document.title}}</h4>
-                         <small class="text-muted">{{item.Document.spanishTitle}}</small>
-                        <p><u>Año</u>: {{item.Document.year}} <u>Puntaje</u>: {{item.Document.rtAllCriticsRating}}</p>
-                        <p><u>Géneros</u>: <a href="#" class="label label-default label-pill" ng-repeat="genre in item.Document.genreTags">{{genre}}</a>
-                        <br><u>Tags</u>: <a href="#" class="label label-default label-pill"  ng-repeat="genre in item.Document.movieTags">{{genre}}</a></p>
+                        <h4 class="media-heading">{{item.Document.Title}}</h4>
+                         <small class="text-muted">{{item.Document.Description}}</small>
+                         <p><u>Publicado</u>: {{item.Document.Date | date : 'dd/MM/yyyy'}}</p>
+                         <p><u>Autor</u>: {{item.Document.Author}}</p>
+                        <p><u>Categoría</u>: {{item.Document.Category}} <u>Visitas</u>: {{item.Document.Views}}</p>
+                        <p><u>Auto</u>: <a href="#" class="label label-default label-pill" ng-repeat="genre in item.Document.TagsModelos">{{genre}}</a></p>
                         <small class="text-muted"><strong>Score</strong> {{item.Score}}</small>
                     </div>
                     </div>             

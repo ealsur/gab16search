@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Serialization;
 
 namespace gab16search
 {
@@ -21,9 +22,9 @@ namespace gab16search
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
             services.AddTransient<ISearchService>(provider =>
-                 new SearchService("ealsur","AAB47BB2318A98BCDAD548671A5C4780")         
+                 new SearchService("ealsur","7E557A152E266D91F4359795772B3379")         
             );
             services.AddTransient<IStorageService>(provider =>
                  new StorageService(Configuration["storage"])          

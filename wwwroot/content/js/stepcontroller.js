@@ -14,18 +14,11 @@
        $scope.page = 1;
        $scope.getDescriptionByKey = function(key){
             switch(key){
-                case "year": return "Año";
-                case "rtAllCriticsRating": return "Puntaje";
-                case "actorTags": return "Actores";
-                case "genreTags": return "Género";
+                case "Year": return "Año";
+                case "Category": return "Categoría";
+                case "TopLevelDomain": return "País";
             }
             return key;  
-         };
-         $scope.curateUrl = function(url){
-             if(url[0] === '"'){
-           var u= url.substr(1);
-           return u.substring(0, u.length - 1);
-             }
          };
          $scope.filter = function($event, filter, value){
              $event.preventDefault();
@@ -65,9 +58,6 @@
                 Page:$scope.page
             }
         }).then(function success(response) {
-            angular.forEach(response.data.Results,function(item){
-                item.Document.imdbPictureURL = $scope.curateUrl(item.Document.imdbPictureURL);
-            });
             $scope.results= response.data;
             $rootScope.$broadcast('log', response.data);
             $scope.searching=false;
@@ -84,13 +74,7 @@
     $scope.profile='';
     $scope.tag='';
     var lastSearch='';
-           $scope.curateUrl = function(url){
-               
-             if(url[0] === '"'){
-           var u= url.substr(1);
-           return u.substring(0, u.length - 1);
-             }
-         };
+          
        $scope.next = function($event){
            $scope.page++;
            $scope.search($event);
@@ -116,10 +100,7 @@
                 Page:$scope.page
             }
         }).then(function success(response) {
-            angular.forEach(response.data.Results,function(item){
-                item.Document.imdbPictureURL = $scope.curateUrl(item.Document.imdbPictureURL);
-            });
-            $scope.results= response.data;
+           $scope.results= response.data;
             $rootScope.$broadcast('log', response.data);
             $scope.searching=false;
         }, function error() {
@@ -152,12 +133,7 @@
        $scope.searching=false;
        $scope.page = 1;
    var lastSearch='';
-          $scope.curateUrl = function(url){
-             if(url[0] === '"'){
-           var u= url.substr(1);
-           return u.substring(0, u.length - 1);
-             }
-         };
+          
        $scope.next = function($event){
            $scope.page++;
            $scope.search($event);
@@ -182,10 +158,7 @@
                 Page:$scope.page
             }
         }).then(function success(response) {
-            angular.forEach(response.data.Results,function(item){
-                item.Document.imdbPictureURL = $scope.curateUrl(item.Document.imdbPictureURL);
-            });
-            $scope.results= response.data;
+           $scope.results= response.data;
             $rootScope.$broadcast('log', response.data);
             $scope.searching=false;
         }, function error() {

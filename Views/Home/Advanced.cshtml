@@ -17,9 +17,9 @@
     </div>
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 alert alert-info">
         <ul class="list-unstyled">
-            <li><a href="https://msdn.microsoft.com/en-us/library/azure/mt589323.aspx#bkmk_fuzzy" target="_blank"><span class="fa fa-link"></span> Fuzzy search</a>:<kbd>tap~1</kbd></li>
-            <li><a href="https://msdn.microsoft.com/en-us/library/azure/mt589323.aspx#bkmk_proximity" target="_blank"><span class="fa fa-link"></span> Proximity search</a>:<kbd>"back future"~2</kbd></li>
-            <li><a href="https://msdn.microsoft.com/en-us/library/azure/mt589323.aspx#bkmk_termboost" target="_blank"><span class="fa fa-link"></span> Term boosting</a>:<kbd>indiana jones temple^2</kbd></li>
+            <li><a href="https://msdn.microsoft.com/en-us/library/azure/mt589323.aspx#bkmk_fuzzy" target="_blank"><span class="fa fa-link"></span> Fuzzy search</a>:<kbd>fard~1</kbd></li>
+            <li><a href="https://msdn.microsoft.com/en-us/library/azure/mt589323.aspx#Anchor_2" target="_blank"><span class="fa fa-link"></span> Field-scoped queries</a>:<kbd>Category:Lanzamientos NOT chevrolet</kbd></li>
+            <li><a href="https://msdn.microsoft.com/en-us/library/azure/mt589323.aspx#bkmk_termboost" target="_blank"><span class="fa fa-link"></span> Term boosting</a>:<kbd>duster ecosport^4</kbd></li>
         </ul>
     </div>
 </div>    
@@ -35,17 +35,18 @@
         </div>
         <div  class="col-xs-12" ng-show="!searching && results.Count > 0">
         <h4>Hay <strong>{{results.Count}}</strong> resultados de búsqueda</h4>           
-        <div class="col-xs-12" ng-repeat="item in results.Results">
+       <div class="col-xs-12" ng-repeat="item in results.Results">
                 <div class="media result-item">
                     <div class="media-left media-middle">
-                        <img class="media-object" ng-src="{{item.Document.imdbPictureURL}}">
+                        <img class="media-object" ng-src="{{item.Document.ImageUrl}}">
                     </div>
                     <div class="media-body">
-                        <h4 class="media-heading">{{item.Document.title}}</h4>
-                         <small class="text-muted">{{item.Document.spanishTitle}}</small>
-                        <p><u>Año</u>: {{item.Document.year}} <u>Puntaje</u>: {{item.Document.rtAllCriticsRating}}</p>
-                        <p><u>Géneros</u>: <a href="#" class="label label-default label-pill" ng-repeat="genre in item.Document.genreTags">{{genre}}</a>
-                        <br><u>Tags</u>: <a href="#" class="label label-default label-pill"  ng-repeat="genre in item.Document.movieTags">{{genre}}</a></p>
+                        <h4 class="media-heading">{{item.Document.Title}}</h4>
+                         <small class="text-muted">{{item.Document.Description}}</small>
+                         <p><u>Publicado</u>: {{item.Document.Date | date : 'dd/MM/yyyy'}}</p>
+                         <p><u>Autor</u>: {{item.Document.Author}}</p>
+                        <p><u>Categoría</u>: {{item.Document.Category}} <u>Visitas</u>: {{item.Document.Views}}</p>
+                        <p><u>Auto</u>: <a href="#" class="label label-default label-pill" ng-repeat="genre in item.Document.TagsModelos">{{genre}}</a></p>
                         <small class="text-muted"><strong>Score</strong> {{item.Score}}</small>
                     </div>
                     </div>             
