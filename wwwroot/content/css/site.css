@@ -40,7 +40,8 @@ body>.container-fluid{
 }
 .presentation{
     height:calc(100% - 100px);
-    background-color:#0089D1;
+    background-image:url(/images/back.png);
+    background-size:cover;
     padding-top:5%;
     position:relative;
 }
@@ -178,6 +179,9 @@ nav{
         }
          .presentation h1 strong{
             font-size:2em;
+        }
+        .presentation{
+    background-position-y: -400px;
         }
   }
   
