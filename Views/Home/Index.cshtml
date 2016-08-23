@@ -22,13 +22,13 @@
             <div ng-show="!loaded" class="splash">
                 <img src="images/Azure Search.png" class="center-block img-responsive">
                 <div class="text-xs-center">
-                    <h1>NET Conf UY</h1>
+                    <img src="images/netconfuy.signature.png" class="center-block">
                     <img src="images/loader.gif" class="center-block">
                 </div>
             </div>
             <div ng-show="loaded" class="container-fluid" ng-cloak style="height:100%;">
                 <nav class="navbar navbar-dark bg-inverse">
-                    <a class="navbar-brand" href="#"><img alt="Brand" src="images/Azure Search.png"></a>
+                    <a class="navbar-brand" href="#"><img alt="Brand" src="images/avatar-original.png"></a>
                     <ul class="nav navbar-nav hidden-md-down">
                             <li ng-repeat="crumb in crumbs | filter:'!nocrumb'" class="nav-item">
                                 <span ng-if="!$last" class="text-muted">{{crumb}} &gt;</span>
