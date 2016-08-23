@@ -36,10 +36,10 @@ body>.container-fluid{
     font-size:2em;
 }
 .presentation h2{
-       color:black;
+       color:white;
 }
 .presentation{
-    height:calc(100% - 100px);
+    height:100%;
     background-image:url(/images/back.png);
     background-size:cover;
     padding-top:5%;
