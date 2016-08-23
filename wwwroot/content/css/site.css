@@ -39,7 +39,7 @@ body>.container-fluid{
        color:white;
 }
 .presentation{
-    height:100%;
+    height:calc(100% - 100px);
     background-image:url(/images/back.png);
     background-size:cover;
     padding-top:5%;
