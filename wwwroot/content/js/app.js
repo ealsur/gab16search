@@ -74,12 +74,12 @@
                     templateUrl: '/pricing',
                     controller: 'StepController'
                 })
-                 .state('Gracias!', {
+                 .state('nocrumb-Gracias!', {
                     url: '/end',
                     templateUrl: '/end',
                     controller: 'StepController'
                 })
-                 .state('Twitter!', {
+                 .state('nocrumb-Twitter!', {
                     url: '/twitter',
                     templateUrl: '/twitter',
                     controller: 'SearchTwitterController'
