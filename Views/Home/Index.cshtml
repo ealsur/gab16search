@@ -17,16 +17,16 @@
             
         </environment>
     </head>
-    <body ng-app="searchPlayground">
+    <body ng-app="searchPlayground" style="background-color:black">
     <div ng-controller="ChromeController" class="container-fluid" >
             <div ng-show="!loaded" class="splash">
-                <img src="images/netconfuy.signature.png" class="center-block img-responsive">
+                <img src="images/avatar-original.png" class="center-block img-responsive">
                 <div class="text-xs-center">
                     <img src="images/loader.gif" class="center-block">
                 </div>
             </div>
             <div ng-show="loaded" class="container-fluid" ng-cloak style="height:100%;">
-                <nav class="navbar navbar-dark bg-inverse">
+                <nav class="navbar navbar-dark"  style="background-color:white;margin-left:-30px;margin-right:-30px;">
                     <a class="navbar-brand" href="#"><img alt="Brand" src="images/avatar-original.png"></a>
                     <ul class="nav navbar-nav hidden-md-down">
                             <li ng-repeat="crumb in crumbs | filter:'!nocrumb'" class="nav-item">
