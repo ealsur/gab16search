@@ -44,11 +44,11 @@ public class SearchService:ISearchService
         if(!string.IsNullOrEmpty(payload.ScoringProfile)){
             sp.ScoringProfile = payload.ScoringProfile;
             if(!string.IsNullOrEmpty(payload.ScoringParameter)){
-                sp.ScoringParameters = payload.ScoringParameter.Split(',').Select(x=> new ScoringParameter("pais", payload.ScoringParameter)).ToList();    
+                sp.ScoringParameters = payload.ScoringParameter.Split(',').Select(x=> new ScoringParameter("pais", new List<string>() { payload.ScoringParameter })).ToList();    
             }
             else{
                 if(payload.ScoringParameter=="")
-                sp.ScoringParameters = new List<ScoringParameter>(){ new ScoringParameter("pais", "none")};
+                sp.ScoringParameters = new List<ScoringParameter>(){ new ScoringParameter("pais", new List<string>() { "none" }) };
             }    
         } 
         sp.IncludeTotalResultCount = true;
