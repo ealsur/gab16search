@@ -1,9 +1,10 @@
+using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Queue;
 
 public interface IStorageService
 {
-    void Enqueue(string message);
+    Task Enqueue(string message);
 }
 
 public class StorageService:IStorageService{
@@ -14,8 +15,8 @@ public class StorageService:IStorageService{
             queue = queueClient.GetQueueReference("twitter");
         }
         
-        public void Enqueue(string message){
-            queue.AddMessage(new CloudQueueMessage(message));
+        public async Task Enqueue(string message){
+            await queue.AddMessageAsync(new CloudQueueMessage(message));
         }
     
 }

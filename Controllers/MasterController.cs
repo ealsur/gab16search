@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 
@@ -41,9 +42,9 @@ namespace gab16search.Controllers
         }
         
         [HttpPost]
-        public IActionResult Twitter(string account)
+        public async Task<IActionResult> Twitter(string account)
         {
-            storageService.Enqueue(account);
+            await storageService.Enqueue(account);
             return Ok();
         }
     }
