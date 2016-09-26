@@ -33,6 +33,7 @@ body>.container-fluid{
     font-size:1em;
     color:white;
 }
+h4{color:white;}
 .presentation h1 strong{
     font-size:2em;
 }
@@ -78,13 +79,11 @@ nav{
      top:50%;
      position:fixed;
      text-align:center;
-     margin-top:-40px;
+     margin-top:-98px;
      width: 100%;
- }
- .vertical-center>div{
-     width:40%;
-     left:50%;
-     margin-left:-20%;
+     padding-left:0px !important;
+     padding-right:0px !important;
+     left:0;
  }
 .steps{
     position:fixed;
@@ -175,6 +174,17 @@ nav{
       font-weight: bolder;
   }
   @media (min-width:768px){
+      .vertical-center{
+        margin-top:-40px;
+        padding-left:15px;
+        padding-right:15px;
+        left:auto;
+    }
+      .vertical-center>div{
+            width:40%;
+            left:50%;
+            margin-left:-20%;
+        }
       .presentation h1{
             font-size:3em;
         }
