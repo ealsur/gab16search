@@ -21,7 +21,7 @@ public class SearchService:ISearchService
     
     public DocumentSuggestResult Suggest(string term, bool fuzzy){
         SuggestParameters sp = new SuggestParameters();
-        sp.Top = 5;
+        sp.Top = 1;
         sp.UseFuzzyMatching=fuzzy;
         var indexClient = client.Indexes.GetClient("news");
         return indexClient.Documents.Suggest(term, "tags", sp);

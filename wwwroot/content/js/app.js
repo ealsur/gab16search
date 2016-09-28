@@ -24,7 +24,7 @@
                     templateUrl: '/SearchBox',
                     controller: 'StepController'
                 })
-                .state('Intro', {
+                .state('nocrumb-Intro', {
                     url: '/intro',
                     templateUrl: '/Intro',
                     controller: 'StepController'
@@ -44,7 +44,7 @@
                     templateUrl: '/scoring',
                     controller: 'ScoringController'
                 })
-                .state('Indexers', {
+                .state('nocrumb-Indexers', {
                     url: '/indexers',
                     templateUrl: '/Indexers',
                     controller: 'StepController'
@@ -64,12 +64,12 @@
                     templateUrl: '/analytics',
                     controller: 'StepController'
                 })
-                .state('Free!', {
+                .state('nocrumb-Free!', {
                     url: '/try',
                     templateUrl: '/try',
                     controller: 'StepController'
                 })
-                .state('Pricing', {
+                .state('Offering', {
                     url: '/pricing',
                     templateUrl: '/pricing',
                     controller: 'StepController'

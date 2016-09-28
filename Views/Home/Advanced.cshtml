@@ -41,13 +41,12 @@
                         <img class="media-object" ng-src="{{item.Document.ImageUrl}}">
                     </div>
                     <div class="media-body">
-                        <h4 class="media-heading">{{item.Document.Title}}</h4>
+                        <h4 class="media-heading"><a href="{{item.Document.Link}}" target="_blank">{{item.Document.Title}}</a></h4>
                          <small class="text-muted">{{item.Document.Description}}</small>
                          <p><u>Publicado</u>: {{item.Document.Date | date : 'dd/MM/yyyy'}}</p>
-                         <p><u>Autor</u>: {{item.Document.Author}}</p>
                         <p><u>Categoría</u>: {{item.Document.Category}} <u>Visitas</u>: {{item.Document.Views}}</p>
                         <p><u>Auto</u>: <a href="#" class="label label-default label-pill" ng-repeat="genre in item.Document.TagsModelos">{{genre}}</a></p>
-                        <small class="text-muted"><strong>Score</strong> {{item.Score}}</small>
+                        <h4 class="media-heading"><strong>Score</strong> {{item.Score}}</h4>
                     </div>
                     </div>             
                 

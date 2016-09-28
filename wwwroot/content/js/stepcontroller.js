@@ -6,10 +6,11 @@
     function($scope, $rootScope){
     })
     .controller('SearchController',
-    function($scope, $rootScope, $http){
+    function($scope, $rootScope, $http, $timeout){
        $scope.searchText = '';
        $scope.searching=false;
        $scope.filters=null;
+       $scope.showTooltips=false;
        var lastSearch='';
        $scope.page = 1;
        $scope.getDescriptionByKey = function(key){
@@ -41,6 +42,7 @@
            $scope.page--;
            $scope.search($event);
        };
+       var firstLog=true;
        $scope.search = function($event){
          $event.preventDefault();  
          $scope.searching=true;
@@ -60,6 +62,13 @@
         }).then(function success(response) {
             $scope.results= response.data;
             $rootScope.$broadcast('log', response.data);
+            if(firstLog){
+                firstLog=false;
+                $scope.showTooltips=true;
+                $timeout(function(){
+                    $scope.showTooltips=false;
+                },3000);
+            }
             $scope.searching=false;
         }, function error() {
             
@@ -67,14 +76,15 @@
        };
     })
     .controller('ScoringController',
-    function($scope, $rootScope, $http){
+    function($scope, $rootScope, $http, $timeout){
        $scope.searchText = '';
        $scope.searching=false;
+       $scope.showTooltips=false;
        $scope.page = 1;
     $scope.profile='';
     $scope.tag='';
     var lastSearch='';
-          
+          var firstLog=true;
        $scope.next = function($event){
            $scope.page++;
            $scope.search($event);
@@ -96,10 +106,17 @@
             data: {
                 Text: $scope.searchText,
                 ScoringProfile:$scope.profile,
-                ScoringParameter:($scope.profile=="Complete"?$scope.tag:null),
+                ScoringParameter:($scope.profile=="Completo"?$scope.tag:null),
                 Page:$scope.page
             }
         }).then(function success(response) {
+            if(firstLog){
+                firstLog=false;
+                $scope.showTooltips=true;
+                $timeout(function(){
+                    $scope.showTooltips=false;
+                },3000);
+            }
            $scope.results= response.data;
             $rootScope.$broadcast('log', response.data);
             $scope.searching=false;
@@ -109,7 +126,7 @@
        };
     })
     .controller('SuggestionController',
-    function($scope, $rootScope, $http){
+    function($scope, $rootScope, $http, $timeout){
        $scope.noResults=false;
        $scope.loading=false;
        $scope.fuzzy = 'true';
@@ -128,10 +145,12 @@
       };
     })
     .controller('AdvancedController',
-    function($scope, $rootScope, $http){
+    function($scope, $rootScope, $http, $timeout){
        $scope.searchText = '';
        $scope.searching=false;
+       $scope.showTooltips=false;
        $scope.page = 1;
+       var firstLog=true;
    var lastSearch='';
           
        $scope.next = function($event){
@@ -158,6 +177,13 @@
                 Page:$scope.page
             }
         }).then(function success(response) {
+            if(firstLog){
+                firstLog=false;
+                $scope.showTooltips=true;
+                $timeout(function(){
+                    $scope.showTooltips=false;
+                },3000);
+            }
            $scope.results= response.data;
             $rootScope.$broadcast('log', response.data);
             $scope.searching=false;
@@ -167,11 +193,13 @@
        };
     })
     .controller('SearchTwitterController',
-    function($scope, $rootScope, $http){
+    function($scope, $rootScope, $http, $timeout){
        $scope.searchText = '';
        $scope.searching=false;
        $scope.filters=null;
        $scope.page = 1;
+       $scope.showTooltips=false;
+       var firstLog = true;
        var lastSearch='';
        $scope.getDescriptionByKey = function(key){
             switch(key){
@@ -219,6 +247,13 @@
                 Page:$scope.page
             }
         }).then(function success(response) {
+            if(firstLog){
+                firstLog=false;
+                $scope.showTooltips=true;
+                $timeout(function(){
+                    $scope.showTooltips=false;
+                },3000);
+            }
             $scope.results= response.data;
             $rootScope.$broadcast('log', response.data);
             $scope.searching=false;
