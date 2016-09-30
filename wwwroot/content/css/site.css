@@ -221,7 +221,21 @@ nav{
             font-size:2rem;
         }
   }
+  @media (min-width:800px){
+      .presentation{
+            padding-top:30px;
+        }
+      .hero h1{
+        font-size:1.5rem;
+    }  
+  }
   @media (min-width:1024px){
+       .presentation{
+            padding-top:100px;
+        }
+      .hero h1{
+        font-size:2.5rem;
+    }
       .vertical-center>div{
             width:60%;
             left:50%;
