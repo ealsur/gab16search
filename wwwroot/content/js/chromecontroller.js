@@ -69,66 +69,9 @@
             
           $timeout(function(){
             $scope.loaded=true;
-            if(!masterMode){
-                $scope.next(null);
-            }
-            else{
-                $scope.goToStep($scope.masterStep);
-            }
+            $scope.next(null);            
         },2000);  
             
         };
-        
-        var modalInstance = $uibModal.open({
-            templateUrl: 'modalTwitter.html',
-            controller: 'ModalTwitterController'
-            }); 
-        modalInstance.result.then(start,start);
-        var interval = $interval(function(){
-           $http({
-            method: 'GET',
-            url: '/master/GetCurrent'
-        }).then(function success(response) {
-           if(response.data.current !== null){
-               masterMode=true;
-               if($scope.step==$scope.masterStep-1){
-                   $scope.next(null);
-               }               
-               $scope.masterStep = response.data.current;
-           }
-           else{
-               $interval.cancel(interval);
-               /*No master running*/
-           }
-        }, function(){
-             $interval.cancel(interval);
-        });
-        },2000);
-    })
-    .controller('ModalTwitterController',
-    function ($scope, $uibModalInstance, $http) {
-        $scope.loading=false;
-        $scope.account='';
-        $scope.ok = function () {
-            $scope.loading=true;
-            
-            $http({
-                method: 'POST',
-                url: '/master/twitter',
-                params:{account:$scope.account}
-            }).then(function success(response) {
-                $scope.loading=false;
-                $uibModalInstance.close();
-            }, function error() {
-                $uibModalInstance.close();    
-            });
-            
-        };
-
-        $scope.cancel = function () {
-            $uibModalInstance.dismiss('cancel');
-        };
-
-    })
-    ;
+    });
 })();
